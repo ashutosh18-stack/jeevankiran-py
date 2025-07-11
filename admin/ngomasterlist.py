@@ -5,18 +5,15 @@ import header
 import mysql.connector
 
 cgitb.enable()
-
-
-# DB Connection
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="",  # replace if you use a password
+    password="",  
     database="jeevankiran"
 )
-mycursor = mydb.cursor(dictionary=True)
+mycursor = mydb.cursor()
 
-# Query data
+
 query = "SELECT * FROM ngomaster"
 mycursor.execute(query)
 results = mycursor.fetchall()
@@ -37,7 +34,7 @@ print('''
     <table>
       <thead>
         <tr>
-          <th>#</th>
+          <th>Id</th>
           <th>Name</th>
           <th>Email</th>
           <th>Phone</th>
@@ -52,29 +49,29 @@ print('''
 ''')
 
 # Loop through NGOs
-for i, row in enumerate(results, start=1):
+for x in results:
     print(f'''
         <tr>
-          <td>{i}</td>
-          <td>{row['name']}</td>
-          <td>{row['email']}</td>
-          <td>{row['phone']}</td>
-          <td><img src="{row['logo']}" alt="Logo" width="50" height="50" style="border-radius:6px;"></td>
-          <td>{row['description']}</td>
-          <td>{row['address']}</td>
+          <td>{x[0]}</td>
+          <td>{x[1]}</td>
+          <td>{x[2]}</td>
+          <td>{x[3]}</td>
+          <td><img src="{x[4]}" alt="Logo" width="50" height="50" style="border-radius:6px;"></td>
+          <td>{x[5]}</td>
+          <td>{x[6]}</td>
           <td class="social-links">
-            <a href="{row['instagram']}" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="{row['twitter']}" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="{row['facebook']}" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="{x[7]}" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="{x[8]}" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="{x[9]}" target="_blank"><i class="fab fa-facebook"></i></a>
           </td>
           <td class="actions">
-            <a href="editngo.py?id={row['id']}" class="edit"><i class="fas fa-edit"></i></a>
-            <a href="deletengo.py?id={row['id']}" class="delete" onclick="return confirm('Are you sure to delete this NGO?');"><i class="fas fa-trash-alt"></i></a>
+            <a href="editngo.py?id={x[0]}" class="edit"><i class="fas fa-edit"></i></a>
+            <a href="deletengo.py?id={x[0]}" class="delete" onclick="return confirm('Are you sure to delete this NGO?');"><i class="fas fa-trash-alt"></i></a>
           </td>
         </tr>
     ''')
 
-# HTML Footer
+
 print('''
       </tbody>
     </table>

@@ -11,7 +11,7 @@ print(f'''
 
   <h2 style="margin-bottom: 25px;"><i class="fas fa-building"></i> Add NGO Master</h2>
 
-  <form action="backend/ngomasterbackend.py" method="post" enctype="multipart/form-data" class="ngo-form">
+  <form action="backend/ngocreatebackend.py" method="post" enctype="multipart/form-data" class="ngo-form">
     <div class="form-row">
       <div class="form-group">
         <label for="ngo_name">NGO Name</label>
