@@ -11,7 +11,7 @@ mydb = mysql.connector.connect(
     password="",  
     database="jeevankiran"
 )
-mycursor = mydb.cursor()
+mycursor = mydb.cursor(dictionary=True)
 
 
 query = "SELECT * FROM ngomaster"
@@ -34,11 +34,12 @@ print('''
     <table>
       <thead>
         <tr>
-          <th>Id</th>
+          <th>Id</th> 
+      <th>Logo</th>
           <th>Name</th>
           <th>Email</th>
           <th>Phone</th>
-          <th>Logo</th>
+         
           <th>Description</th>
           <th>Address</th>
           <th>Social Links</th>
@@ -52,21 +53,22 @@ print('''
 for x in results:
     print(f'''
         <tr>
-          <td>{x[0]}</td>
-          <td>{x[1]}</td>
-          <td>{x[2]}</td>
-          <td>{x[3]}</td>
-          <td><img src="{x[4]}" alt="Logo" width="50" height="50" style="border-radius:6px;"></td>
-          <td>{x[5]}</td>
-          <td>{x[6]}</td>
+          <td>{x['ngo_id']}</td>
+           <td><img src="backend/ngomasteruploads/{x['ngo_logo']}" alt="Logo" width="50" height="50" style="border-radius:6px;"></td>       
+          <td>{x['ngo_name']}</td>
+          <td>{x['ngo_email']}</td>
+          <td>{x['ngo_phone']}</td>
+
+       <td>{x['ngo_description']}</td>
+          <td>{x['ngo_address']}</td>
           <td class="social-links">
-            <a href="{x[7]}" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="{x[8]}" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="{x[9]}" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="{x['ngo_instagram']}" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="{x['ngo_twitter']}" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="{x['ngo_facebook']}" target="_blank"><i class="fab fa-facebook"></i></a>
           </td>
           <td class="actions">
-            <a href="editngo.py?id={x[0]}" class="edit"><i class="fas fa-edit"></i></a>
-            <a href="deletengo.py?id={x[0]}" class="delete" onclick="return confirm('Are you sure to delete this NGO?');"><i class="fas fa-trash-alt"></i></a>
+            <a href="ngomasteredit.py?ngo_id={x['ngo_id']}" class="edit"><i class="fas fa-edit"></i></a>
+            <a href="backend/ngomasterdelete.py?ngo_id={x['ngo_id']}" class="delete" ><i class="fas fa-trash-alt"></i></a>
           </td>
         </tr>
     ''')

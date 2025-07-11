@@ -23,13 +23,13 @@ print(f'''
   <!-- Sidebar -->
   <aside id="sidebar" class="sidebar collapsed">
     <div class="logo">
-      <a href="#"><i class="fas fa-hands-helping"></i><span class="logo-text"> NGO Panel</span></a>
+      <a href="dashboard.py"><i class="fas fa-hands-helping"></i><span class="logo-text"> NGO Panel</span></a>
     </div>
     <nav class="nav">
       <ul>
         <li><a href="dashboard.py?admin_id={admin_id}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-        <li><a href="ngomaster.py?admin_id={admin_id}"><i class="fas fa-building"></i><span>NGO Master</span></a></li>
-        <li><a href="#"><i class="fas fa-project-diagram"></i><span>Project Master</span></a></li>
+        <li><a href="ngomaster.py"><i class="fas fa-building"></i><span>NGO Master</span></a></li>
+        <li><a href="projectmaster.py"><i class="fas fa-project-diagram"></i><span>Project Master</span></a></li>
         <li><a href="#"><i class="fas fa-box"></i><span>Package Master</span></a></li>
         <li><a href="#"><i class="fas fa-hand-holding-heart"></i><span>Donation Master</span></a></li>
         <li><a href="#"><i class="fas fa-bullhorn"></i><span>Special Campaigns</span></a></li>
