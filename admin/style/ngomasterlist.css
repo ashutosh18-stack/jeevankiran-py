@@ -1,0 +1,110 @@
+/* Container */
+.ngo-list-container {
+  max-width: 1300px;
+  margin: auto;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(41, 128, 185, 0.1);
+}
+
+.ngo-list-container h2 {
+  margin-bottom: 25px;
+  color: #2980b9;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  font-size: 0.95rem;
+}
+
+thead {
+  background-color: #2980b9;
+  color: white;
+}
+
+th, td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  vertical-align: top;
+  text-align: left;
+}
+
+td img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Social Media Links */
+.social-links a {
+  margin-right: 8px;
+  color: #2980b9;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.social-links a:hover {
+  color: #1c6396;
+}
+
+/* Edit/Delete Buttons */
+.actions a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  margin-right: 8px;
+}
+.actions .edit {
+  color: #27ae60; /* green for edit */
+}
+.actions .edit:hover {
+  color: #1e8449;
+}
+.actions .delete {
+  color: #c0392b; /* red for delete */
+}
+.actions .delete:hover {
+  color: #922b21;
+}
+
+/* Responsive Table on Small Screens */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #555;
+    flex: 1;
+  }
+
+  td img {
+    width: 40px;
+    height: 40px;
+  }
+}

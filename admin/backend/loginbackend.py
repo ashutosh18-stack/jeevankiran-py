@@ -6,6 +6,7 @@ import mysql.connector
 print("Content-Type: text/html\n")
 form=cgi.FieldStorage()
 #print(form)
+admin_id=form.getvalue("admin_id")
 admin_email=form.getvalue("email")
 admin_phone=form.getvalue("phone")
 admin_password=form.getvalue("password")
@@ -24,6 +25,7 @@ myresult=mycursor.fetchone()
 #print(myresult)
 #print(mycursor.rowcount)
 if mycursor.rowcount==1:
+    admin_id=myresult[0];
     admin_name=myresult[1];
     admin_phone=myresult[3];
     admin_password=myresult[4];
@@ -33,7 +35,7 @@ if mycursor.rowcount==1:
           localStorage.setItem("admin_phone","{admin_phone}");
           localStorage.setItem("admin_password","{admin_password}");
           alert("welcome {admin_name}");
-          location.href="../index.py";
+          location.href="../dashboard.py?admin_id={admin_id}";
           </script>''')
 else:
     print(f'''

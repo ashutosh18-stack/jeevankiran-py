@@ -16,6 +16,7 @@ admin_last_name=form.getvalue("last_name")
 admin_address=form.getvalue("address")
 # print(admin_address)
 admin_email=form.getvalue("email")
+admin_DOB=form.getvalue("dob")
 # print(admin_email)
 admin_phone=form.getvalue("phone")
 # print(admin_phone)
@@ -28,12 +29,12 @@ mydb=mysql.connector.connect(
     database="jeevankiran"
 )
 mycursor=mydb.cursor()
-query=f"""UPDATE adminlogin SET admin_first_name='{admin_first_name}', admin_middle_name='{admin_middle_name}', admin_last_name='{admin_last_name}', admin_address='{admin_address}', admin_email='{admin_email}', admin_phone='{admin_phone}', admin_password='{admin_password}' WHERE admin_id={admin_id}"""
+query=f"""UPDATE adminlogin SET admin_first_name='{admin_first_name}', admin_middle_name='{admin_middle_name}', admin_last_name='{admin_last_name}', admin_address='{admin_address}', admin_email='{admin_email}',admin_DOB='{admin_DOB}', admin_phone='{admin_phone}', admin_password='{admin_password}' WHERE admin_id={admin_id}"""
 # print(query)
 mycursor.execute(query)
 mydb.commit()
-print('''
+print(f'''
       <script>
       alert("profile updated successfully!");
-      location.href="../index.py";
+      location.href="../dashboard.py?admin_id={admin_id}";
       </script>''')

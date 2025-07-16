@@ -64,7 +64,7 @@ print(f'''
     <section class="section name-section">
       <div class="input-group">
         <label>Admin ID</label>
-        <input type="text" name="admin_id" value="{myresult[0]}" readonly>
+        <input type="text" name="admin_id" value="{myresult[0]}" readonly />
       </div>
       <div class="input-group">
         <label>First Name</label>
@@ -98,9 +98,13 @@ print(f'''
         <label>Confirm Email</label>
         <input type="email" name="confirm_email" value="{myresult[5]}" placeholder="Confirm email">
       </div>
+       <div class="input-group">
+        <label>Date of Birth</label>
+        <input type="date" name="dob" value="{myresult[6]}" required>
+      </div>
       <div class="input-group full-width">
         <label>Phone Number</label>
-        <input type="tel" name="phone" value="{myresult[6]}" placeholder="Enter phone number">
+        <input type="tel" name="phone" value="{myresult[7]}" placeholder="Enter phone number">
       </div>
     </section>
 
@@ -109,7 +113,7 @@ print(f'''
 <div class="input-group full-width password-wrapper">
   <label>New Password</label>
   <div class="password-input">
-    <input type="password" id="newPass" name="new_password" value="{myresult[7]}" placeholder="Enter new password">
+    <input type="password" id="newPass" name="new_password" value="{myresult[8]}" placeholder="Enter new password">
     <i class="fas fa-eye toggle-password" onclick="togglePassword('newPass', this)"></i>
   </div>
 </div>
@@ -117,7 +121,7 @@ print(f'''
 <div class="input-group full-width password-wrapper">
   <label>Confirm Password</label>
   <div class="password-input">
-    <input type="password" id="confirmPass" name="confirm_password" value="{myresult[7]}" placeholder="Confirm new password">
+    <input type="password" id="confirmPass" name="confirm_password" value="{myresult[8]}" placeholder="Confirm new password">
     <i class="fas fa-eye toggle-password" onclick="togglePassword('confirmPass', this)"></i>
   </div>
 </div>
