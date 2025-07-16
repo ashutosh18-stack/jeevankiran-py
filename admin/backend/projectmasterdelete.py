@@ -28,7 +28,7 @@ folder_path = os.path.join("projectuploads", folder_name)
 
 shutil.rmtree(folder_path)
 
-mycursor.execute("DELETE FROM projectmaster WHERE project_id = %s", (project_id,))
+mycursor.execute(f"DELETE FROM projectmaster WHERE project_id = {project_id}")
 mydb.commit()
 
 print('''

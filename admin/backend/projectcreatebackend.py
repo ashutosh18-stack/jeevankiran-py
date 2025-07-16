@@ -8,13 +8,11 @@ import shutil
 cgitb.enable()
 print("Content-Type: text/html\n")
 
-# Get form data
 form = cgi.FieldStorage()
 title = form.getvalue("title")
 description = form.getvalue("description")
 status = form.getvalue("status")
 
-# Create project folder
 base_dir = "projectuploads"
 project_folder_name = title.replace(" ", "_")
 project_folder_path = os.path.join(base_dir, project_folder_name)
@@ -22,7 +20,6 @@ project_folder_path = os.path.join(base_dir, project_folder_name)
 if not os.path.exists(project_folder_path):
     os.makedirs(project_folder_path)
 
-# Process images
 image_fields = ["image1", "image2", "image3"]
 saved_image_names = []
 
@@ -40,7 +37,6 @@ for index, field_name in enumerate(image_fields, start=1):
     else:
         saved_image_names.append("")
 
-# Insert into MySQL database
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",

@@ -1,17 +1,36 @@
-#!C:\Python312\python.exe
+#!C:/Python312/python.exe
 import cgi
 import cgitb
 cgitb.enable()
 import header
 
-print(f'''
-  <head>
-    <link rel="stylesheet" href="style/ngocreate.css">
-  </head>
+print('''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add NGO</title>
+  <link rel="stylesheet" href="style/ngocreate.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
 
-  <h2 style="margin-bottom: 25px;"><i class="fas fa-building"></i> Add NGO Master</h2>
+<div class="wrapper">
+  <h2><i class="fas fa-building"></i> Add NGO Master</h2>
 
   <form action="backend/ngocreatebackend.py" method="post" enctype="multipart/form-data" class="ngo-form">
+
+    <!-- Upload Logo Section FIRST -->
+    <div class="form-group full-width">
+      <label for="logo">Upload Logo</label>
+      <div class="image-upload-box" id="uploadBox">
+        <input type="file" id="logo" name="logo" accept="image/*" required>
+        <span id="uploadText">Upload</span>
+        <img id="logoPreview" class="preview-img" src="" alt="Preview">
+      </div>
+    </div>
+
+    <!-- Rest of the Form -->
     <div class="form-row">
       <div class="form-group">
         <label for="ngo_name">NGO Name</label>
@@ -27,49 +46,61 @@ print(f'''
     <div class="form-row">
       <div class="form-group">
         <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone"  required>
+        <input type="tel" id="phone" name="phone" required>
       </div>
 
       <div class="form-group">
-        <label for="logo">Upload Logo</label>
-        <input type="file" id="logo" name="logo" accept="image/*" required>
+        <label for="facebook">Facebook Link</label>
+        <input type="url" id="facebook" name="facebook">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="twitter">Twitter Link</label>
+        <input type="url" id="twitter" name="twitter">
+      </div>
+
+      <div class="form-group">
+        <label for="instagram">Instagram Link</label>
+        <input type="url" id="instagram" name="instagram">
       </div>
     </div>
 
     <div class="form-group full-width">
       <label for="description">Description</label>
-      <input type="text" id="description" name="description" rows="3" required>
+      <input type="text" id="description" name="description" required>
     </div>
 
     <div class="form-group full-width">
       <label for="address">Address</label>
-      <input type="text" id="address" name="address" rows="3" required>
+      <input type="text" id="address" name="address" required>
     </div>
 
-    <div class="form-row">
-      <div class="form-group">
-        <label for="facebook">Facebook Link</label>
-        <input type="url" id="facebook" name="facebook">
-      </div>
-
-      <div class="form-group">
-        <label for="twitter">Twitter Link</label>
-        <input type="url" id="twitter" name="twitter">
-      </div>
-    </div>
-
-    <div class="form-group full-width">
-      <label for="instagram">Instagram Link</label>
-      <input type="url" id="instagram" name="instagram">
-    </div>
-
-    <div class="form-actions">
+    <!-- Buttons Section -->
+    <div class="form-actions button-group">
       <button type="submit" class="submit-btn">Add NGO</button>
+      <a href="./ngomaster.py" class="cancel-btn">Cancel</a>
     </div>
-  </form>
 
+  </form>
 </div>
-</div>
+
+<script>
+  const logoInput = document.getElementById('logo');
+  const logoPreview = document.getElementById('logoPreview');
+  const uploadText = document.getElementById('uploadText');
+
+  logoInput.addEventListener('change', () => {
+    const file = logoInput.files[0];
+    if (file) {
+      logoPreview.src = URL.createObjectURL(file);
+      logoPreview.style.display = 'block';
+      uploadText.style.display = 'none';
+    }
+  });
+</script>
+
 </body>
 </html>
 ''')

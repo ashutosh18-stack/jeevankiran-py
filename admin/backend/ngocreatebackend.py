@@ -16,24 +16,19 @@ ngo_twitter = form.getvalue("twitter")
 ngo_instagram = form.getvalue("instagram")
 file_item = form["logo"]
 
-# Folder to save images
 upload_dir = "ngomasteruploads"
 
-# Make sure folder exists
 if not os.path.exists(upload_dir):
     os.makedirs(upload_dir)
 
 if file_item.filename:
-    # Get file extension
     ext = os.path.splitext(file_item.filename)[1]
     image_filename = f"{name}{ext}"
     image_path = os.path.join(upload_dir, image_filename)
 
-    # Save image file to folder
     with open(image_path, "wb") as f:
         f.write(file_item.file.read())
 
-    # Insert data into MySQL using parameterized query
     try:
         db = mysql.connector.connect(
             host="localhost",

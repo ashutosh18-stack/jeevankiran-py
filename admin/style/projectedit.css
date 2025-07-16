@@ -1,0 +1,189 @@
+
+
+    .wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .page-heading {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 35px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+ .image-upload-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+
+    .image-box {
+      width: 100px;
+      height: 100px;
+      border: 2px dashed #aaa;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background-color: #f9f9f9;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .image-box:hover {
+      background-color: #eee;
+    }
+
+    .image-box input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .image-box span {
+      font-size: 14px;
+      color: #777;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .preview-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      z-index: 0;
+      display: none;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #444;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 0.95rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    .form-group .switch {
+      margin-top: 10px;
+      position: relative;
+      width: 140px;
+      height: 45px;
+      background-color: #ccc;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-group .switch.active {
+      background-color: #2980b9;
+    }
+
+    .circle {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 35px;
+      height: 35px;
+      background-color: #fff;
+      border-radius: 50%;
+      transition: left 0.3s ease;
+      z-index: 1;
+    }
+
+    .form-group .switch.active .circle {
+      left: calc(100% - 40px);
+    }
+
+    .switch-text {
+      position: absolute;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 20px;
+      transition: all 0.3s ease;
+      z-index: 0;
+    }
+
+    .form-group .switch.active .switch-text {
+      justify-content: flex-start;
+      padding-left: 30px;
+      padding-right: 0;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #2980b9;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #e86c00;
+    }
+
+    @media (max-width: 600px) {
+      .image-upload-wrapper {
+        flex-direction: column;
+      }
+
+      .image-box {
+        width: 100%;
+      }
+    }

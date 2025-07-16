@@ -65,7 +65,7 @@ print(f'''
     <section class="section name-section">
       <div class="input-group">
         <label>Admin ID</label>
-        <input type="text" name="admin_id" value="{myresult[0]}" readonly>
+        <input type="text" name="admin_id" value="{myresult[0]}" readonly />
       </div>
       <div class="input-group">
         <label>First Name</label>
