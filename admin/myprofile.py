@@ -17,7 +17,6 @@ mycursor = mydb.cursor()
 query = f"SELECT * FROM adminlogin WHERE admin_id='{admin_id}'"
 mycursor.execute(query)
 myresult = mycursor.fetchone()
-
 print('''
 <!DOCTYPE html>
 <html lang="en">
