@@ -34,6 +34,7 @@ if mycursor.rowcount==1:
           localStorage.clear();
           localStorage.setItem("admin_phone","{admin_phone}");
           localStorage.setItem("admin_password","{admin_password}");
+          
           alert("welcome {admin_name}");
           location.href="../dashboard.py?admin_id={admin_id}";
           </script>''')

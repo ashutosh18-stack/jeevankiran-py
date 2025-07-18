@@ -1,300 +1,264 @@
+#!C:\Python312\python.exe
+import cgi
+import cgitb
+cgitb.enable()
+import header
+import mysql.connector
+mydb = mysql.connector.connect(
+    host = "localhost",
+    user ="root",
+    password = "",
+    database = "jeevankiran"
+)
+mycursor = mydb.cursor()
+query=f''' SELECT * FROM jeevankiran'''
+mycursor.execute()
+results = mycursor.fetchall( )
+print('''
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Add New Project Form</title>
-  <link rel="stylesheet" href="style/projectcreate.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <head>
+    <title>Welfare - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
-}
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
 
-.wrapper {
-  max-width: 960px;
-  margin: 20px auto;
-  padding: 0 20px;
-}
+    <link rel="stylesheet" href="css/aos.css">
 
-.page-heading {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
+    <link rel="stylesheet" href="css/ionicons.min.css">
 
-.form-container {
-  background-color: #fff;
-  padding: 40px 35px; /* Increased padding */
-  border-radius: 16px; /* Increased border-radius */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
-}
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-.image-upload-wrapper {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 15px; /* Increased gap */
-  margin-bottom: 25px;
-}
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+      
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-.image-box {
-  width: 120px; /* Increased width */
-  height: 120px; /* Increased height */
-  border: 2px dashed #aaa;
-  border-radius: 12px; /* Increased border-radius */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  background-color: #f9f9f9;
-  cursor: pointer;
-  overflow: hidden;
-  transition: background-color 0.3s ease; /* Added transition */
-}
+    <style>
+      .status-btn.active {
+      background-color: #87CEFA;
+      color: white;
+    }
+    .status-btn.inactive {
+      background-color: #dc3545;
+      color: white;
 
-.image-box:hover {
-  background-color: #ddd; /* Changed hover background color */
-}
+      </style>
 
-.image-box input[type="file"] {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.image-box span {
-  font-size: 14px;
-  color: #777;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.preview-img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px; /* Increased border-radius */
-  z-index: 0;
-  display: none;
-}
-
-.form-group {
-  margin-bottom: 25px; /* Increased margin */
-}
-
-.form-group label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 8px; /* Increased margin */
-  color: #444;
-}
-
-.form-group input[type="text"],
-.form-group textarea {
-  width: 100%;
-  padding: 14px; /* Increased padding */
-  font-size: 1rem; /* Increased font size */
-  border: 1px solid #ccc;
-  border-radius: 10px; /* Increased border-radius */
-  transition: border-color 0.3s ease;
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 100px; /* Increased min-height */
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: #007BFF;
-  outline: none;
-}
-
-.form-group .switch {
-  margin-top: 10px;
-  position: relative;
-  width: 140px;
-  height: 45px;
-  background-color: #ccc;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-
-.form-group .switch.active {
-  background-color: #2980b9;
-}
-
-.circle {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 35px;
-  height: 35px;
-  background-color: #fff;
-  border-radius: 50%;
-  transition: left 0.3s ease;
-  z-index: 1;
-}
-
-.form-group .switch.active .circle {
-  left: calc(100% - 40px);
-}
-
-.switch-text {
-  position: absolute;
-  width: 100%;
-  font-size: 16px;
-  font-weight: 600;
-  color: white;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 20px;
-  transition: all 0.3s ease;
-  z-index: 0;
-}
-
-.form-group .switch.active .switch-text {
-  justify-content: flex-start;
-  padding-left: 30px;
-  padding-right: 0;
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 14px; /* Increased padding */
-  background-color: #2980b9;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 10px; /* Increased border-radius */
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Added transition */
-}
-
-.submit-btn:hover {
-  background-color: #e86c00;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Added shadow on hover */
-}
-
-@media (max-width: 600px) {
-  .image-upload-wrapper {
-    flex-direction: column;
-  }
-
-  .image-box {
-    width: 100%;
-  }
-}
-
-  </style>
-</head>
-<body>
-
-  <div class="wrapper">
-    <div class="page-heading">
-      <i class="fas fa-building"></i> Add Project Master
+  </head>
+  <body>
+    
+    <div class="hero-wrap" style="background-image: url('images/bg_5.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+             <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Projects</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Projects</h1>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <form class="form-container" id="projectForm" action="backend/projectcreatebackend.py" method="post" enctype="multipart/form-data">
+    
+    <section class="ftco-section">
+      <div class="container">
+      	<div class="row">
+''')
+for x in results:
+    title = x['project_title']
 
-      <!-- Image Uploads --> 
-      <label for="title">Project Images Upload</label><br><br>
-      <div class="image-upload-wrapper">
-        <label class="image-box">
-          <input type="file" name="image1" accept="image/*" onchange="previewImage(this)">
-          <img src="" class="preview-img">
-          <span>Upload</span>
-        </label>
-        <label class="image-box">
-          <input type="file" name="image2" accept="image/*" onchange="previewImage(this)">
-          <img src="" class="preview-img">
-          <span>Upload</span>
-        </label>
-        <label class="image-box">
-          <input type="file" name="image3" accept="image/*" onchange="previewImage(this)">
-          <img src="" class="preview-img">
-          <span>Upload</span>
-        </label>
-      </div>
-
-      <!-- Project Title -->
-      <div class="form-group">
-        <label for="title">Project Title</label>
-        <input type="text" id="title" name="title" placeholder="Enter project title" required>
-      </div>
-
-      <!-- Description -->
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea id="description" name="description" placeholder="Enter project description" required></textarea>
-      </div>
-
-      <!-- Status Toggle -->
-      <div class="form-group">
-        <label>Status</label>
-        <div class="switch" id="toggleSwitch">
-          <div class="circle"></div>
-          <div class="switch-text" id="switchText">Completed</div>
+print(f'''
+      		<div class="col-md-4 ftco-animate">
+      			<div class="cause-entry">
+    					<a href="#" class="img" style="background-image: url(images/cause-1.jpg);"></a>
+    					<div class="text p-3 p-md-4">
+    						<h3><a href="#"></a></h3>
+    						<p>Purpose: Provide education kits, school fees, and mentorship to underprivileged children.</p>
+    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
+                <p><a href="project1.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
+                <div class="progress custom-progress-success">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
+                <button class="btn status-btn active">Active</button>
+    					</div>
+    				</div>
+      		</div>
+          
+      		<div class="col-md-4 ftco-animate">
+      			<div class="cause-entry">
+    					<a href="#" class="img" style="background-image: url(images/cause-2.jpg);"></a>
+    					<div class="text p-3 p-md-4">
+    						<h3><a href="#">Jeevan Daan (Health & Medical Aid)</a></h3>
+    						<p>Purpose: Support free medical checkups, surgeries, and health camps.</p>
+    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
+                <p><a href="project2.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
+                <div class="progress custom-progress-success">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
+    					  <button class="btn status-btn active">Active</button>
+              </div>
+    				</div>
+      		</div>
+      		<div class="col-md-4 ftco-animate">
+      			<div class="cause-entry">
+    					<a href="#" class="img" style="background-image: url(images/cause-3.jpg);"></a>
+    					<div class="text p-3 p-md-4">
+    						<h3><a href="#">Bhojan Seva (Food Distribution Program)</a></h3>
+    						<p>Purpose: Distribute nutritious meals to homeless families, children, and the elderly.</p>
+    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
+                <p><a href="project3.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
+                <div class="progress custom-progress-success">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
+    					  <button class="btn status-btn inactive">Non-Active</button>
+              </div>
+    				</div>
+      		</div>
+      		<div class="col-md-4 ftco-animate">
+      			<div class="cause-entry">
+    					<a href="#" class="img" style="background-image: url(images/cause-4.jpg);"></a>
+    					<div class="text p-3 p-md-4">
+    						<h3><a href="project4.py">Nari Shakti (Women Empowerment)</a></h3>
+    						<p>Purpose: Provide skill training, self-help tools, and hygiene kits for women.</p>
+    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
+                <p><a href="project4.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
+                <div class="progress custom-progress-success">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
+    					  <button class="btn status-btn active">Active</button>
+              </div>
+    				</div>
+      		</div>
+      		<div class="col-md-4 ftco-animate">
+      			<div class="cause-entry">
+    					<a href="#" class="img" style="background-image: url(images/cause-5.jpg);"></a>
+    					<div class="text p-3 p-md-4">
+    						<h3><a href="#">Harit Bharat (Green India Campaign)</a></h3>
+    						<p>Purpose: Organize tree plantations, clean-up drives, and eco-awareness programs.</p>
+    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
+                <p><a href="project5.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
+                <div class="progress custom-progress-success">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
+    					  <button class="btn status-btn active">Active</button>
+              </div>
+    				</div>
+      		</div>
+      		<div class="col-md-4 ftco-animate">
+      			<div class="cause-entry">
+    					<a href="#" class="img" style="background-image: url(images/cause-6.jpg);"></a>
+    					<div class="text p-3 p-md-4">
+    						<h3><a href="#">Ashray (Shelter for the Homeless)</a></h3>
+    						<p>Purpose: Build or maintain shelters for the homeless and abandoned elderly.</p>
+    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
+                <p><a href="project6.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
+                <div class="progress custom-progress-success">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
+    					  <button class="btn status-btn active">Active</button>
+              </div>
+    				</div>
+      		</div>
         </div>
-        <input type="hidden" name="status" id="statusInput" value="Completed">
+        <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <!-- Submit Button -->
-      <button type="submit" class="submit-btn">Add Project</button>
-    </form>
-  </div>
+    
+  
 
-  <script>
-    function previewImage(input) {
-      const file = input.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          const previewImg = input.parentElement.querySelector('.preview-img');
-          const uploadText = input.parentElement.querySelector('span');
-          previewImg.src = e.target.result;
-          previewImg.style.display = 'block';
-          uploadText.style.display = 'none';
-        };
-        reader.readAsDataURL(file);
-      }
-    }
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-    // Toggle Switch for Status
-    const toggleSwitch = document.getElementById("toggleSwitch");
-    const switchText = document.getElementById("switchText");
-    const statusInput = document.getElementById("statusInput");
 
-    toggleSwitch.addEventListener("click", () => {
-      toggleSwitch.classList.toggle("active");
-      const isActive = toggleSwitch.classList.contains("active");
-      switchText.textContent = isActive ? "Active" : "Completed";
-      statusInput.value = isActive ? "Active" : "Completed";
-    });
-  </script>
-
-</body>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
 </html>
+''')
+import footer
+
+
+
+
+
+
+
+
+
+for x in results:
+    id = x['project_id']
+    title = x['project_title']
+    desc = x['project_description']
+    status = x['status']
+    image = x['project_img1']
+    image_url = f"../admin/backend/projectuploads/{id}/{image}"
+    status_class = "active" if status.lower() =="active" else "completed" 
+
+print(f'''
+      		<div class="col-md-4 ftco-animate">
+      			<div class="cause-entry" style="font-size: 20px; text-transform: capitalize; font-weight: 600;">
+    			    <a href="#" class="img" style="background-image: url('{image_url}');"></a>
+    					<div class="text p-3 p-md-4">
+    						<h3><a href="#">{title}</a></h3>
+    						<p>{desc}</p>
+    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
+                <p><a href="project1.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
+                <div class="progress custom-progress-success">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
+                <button class="btn status-btn {status_class}">{status}</button>
+    					</div>
+    				</div>
+      		</div>
+              ''')

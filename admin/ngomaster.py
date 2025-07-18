@@ -4,7 +4,10 @@ import cgitb
 cgitb.enable()
 import header
 
-print('''
+
+form = cgi.FieldStorage()
+admin_id = form.getvalue("admin_id")
+print(f'''
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,21 +23,22 @@ print('''
     
     <div class="card-wrapper">
       <!-- Add NGO -->
-      <div class="card" onclick="goTo('ngocreate.py')">
+      <div class="card" onclick="goTo('ngocreate.py?admin_id={admin_id}')">
         <i class="fas fa-plus-circle icon"></i>
         <h2>Add NGO</h2>
         <p>Create a new NGO entry with full details</p>
       </div>
 
       <!-- NGO List -->
-      <div class="card" onclick="goTo('ngomasterlist.py')">
+      <div class="card" onclick="goTo('ngomasterlist.py?admin_id={admin_id}')">
         <i class="fas fa-list icon"></i>
         <h2>NGO List</h2>
         <p>View, edit or delete NGOs from the system</p>
       </div>
     </div>
   </div>
-
+''')
+print('''
   <script>
     function goTo(page) {
       window.location.href = page;

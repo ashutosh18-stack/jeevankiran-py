@@ -28,9 +28,9 @@ print(f'''
     <nav class="nav">
       <ul>
         <li><a href="dashboard.py?admin_id={admin_id}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-        <li><a href="ngomaster.py"><i class="fas fa-building"></i><span>NGO Master</span></a></li>
-        <li><a href="projectmaster.py"><i class="fas fa-project-diagram"></i><span>Project Master</span></a></li>
-        <li><a href="packagemaster.py"><i class="fas fa-box"></i><span>Package Master</span></a></li>
+        <li><a href="ngomaster.py?admin_id={admin_id}"><i class="fas fa-building"></i><span>NGO Master</span></a></li>
+        <li><a href="projectmaster.py?admin_id={admin_id}"><i class="fas fa-project-diagram"></i><span>Project Master</span></a></li>
+        <li><a href="packagemaster.py?admin_id={admin_id}"><i class="fas fa-box"></i><span>Package Master</span></a></li>
         <li><a href="#"><i class="fas fa-hand-holding-heart"></i><span>Donation Master</span></a></li>
         <li><a href="#"><i class="fas fa-bullhorn"></i><span>Special Campaigns</span></a></li>
         <li><a href="#"><i class="fas fa-user-friends"></i><span>Donors</span></a></li>

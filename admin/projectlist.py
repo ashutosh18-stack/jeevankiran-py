@@ -76,7 +76,9 @@ for x in results:
     img2 = x['project_img2']
     img3 = x['project_img3']
 
-    folder = title.replace(" ", "_")
+    # Folder is named using project_id
+    folder = str(project_id)
+
     img_html = '<div class="project-img-group">'
     for i, img in enumerate([img1, img2, img3], start=1):
         if img:
@@ -94,9 +96,10 @@ for x in results:
         <td class="actions">
           <a href="projectedit.py?project_id={project_id}" class="edit"><i class="fas fa-edit"></i></a>
           <a href="backend/projectmasterdelete.py?project_id={project_id}" class="delete"><i class="fas fa-trash-alt"></i></a>
-        </td>
+        </td> 
       </tr>
     ''')
+
 
 print('''
       </tbody>

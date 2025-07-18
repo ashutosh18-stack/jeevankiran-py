@@ -3,6 +3,17 @@ import cgi
 import cgitb
 cgitb.enable()
 import header
+import mysql.connector
+mydb = mysql.connector.connect(
+    host = "localhost",
+    user ="root",
+    password = "",
+    database = "jeevankiran"
+)
+mycursor = mydb.cursor(dictionary=True)
+query=f''' SELECT * FROM projectmaster'''
+mycursor.execute(query)
+results = mycursor.fetchall()
 print('''
 <!DOCTYPE html>
 <html lang="en">
@@ -65,102 +76,38 @@ print('''
     <section class="ftco-section">
       <div class="container">
       	<div class="row">
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(images/cause-1.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-    						<h3><a href="#">Shiksha Daan (Gift of Education)</a></h3>
-    						<p>Purpose: Provide education kits, school fees, and mentorship to underprivileged children.</p>
-    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                <p><a href="project1.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
-                <div class="progress custom-progress-success">
+''')
+for x in results:
+    id = x['project_id']
+    title = x['project_title']
+    desc = x['project_description']
+    status = x['status']
+    image = x['project_img1']
+    
+
+    image_url = f"../admin/backend/projectuploads/{id}/{image}"
+    status_class = "active" if status.lower() == "active" else "completed"
+
+    print(f'''
+    <div class="col-md-4 ftco-animate">
+        <div class="cause-entry">
+            <a href="projectdetails.py?project_id={id}" class="img" style="background-image: url('{image_url}');"></a>
+            <div class="text p-3 p-md-4">
+                <h3><a href="projectdetails.py?project_id={id}">{title}</a></h3>
+                <p>{desc}</p>
+                <span class="donation-time mb-3 d-block">Last donation 1w ago</span>
+                <p><a href="projectdetails.py?project_id={id}">Donate <i class="ion-ios-arrow-forward"></i></a></p>
+               <div class="progress custom-progress-success">
                   <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
-                <button class="btn status-btn active">Active</button>
-    					</div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(images/cause-2.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-    						<h3><a href="#">Jeevan Daan (Health & Medical Aid)</a></h3>
-    						<p>Purpose: Support free medical checkups, surgeries, and health camps.</p>
-    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                <p><a href="project2.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
-    					  <button class="btn status-btn active">Active</button>
-              </div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(images/cause-3.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-    						<h3><a href="#">Bhojan Seva (Food Distribution Program)</a></h3>
-    						<p>Purpose: Distribute nutritious meals to homeless families, children, and the elderly.</p>
-    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                <p><a href="project3.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
-    					  <button class="btn status-btn inactive">Non-Active</button>
-              </div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(images/cause-4.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-    						<h3><a href="project4.py">Nari Shakti (Women Empowerment)</a></h3>
-    						<p>Purpose: Provide skill training, self-help tools, and hygiene kits for women.</p>
-    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                <p><a href="project4.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
-    					  <button class="btn status-btn active">Active</button>
-              </div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(images/cause-5.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-    						<h3><a href="#">Harit Bharat (Green India Campaign)</a></h3>
-    						<p>Purpose: Organize tree plantations, clean-up drives, and eco-awareness programs.</p>
-    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                <p><a href="project5.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
-    					  <button class="btn status-btn active">Active</button>
-              </div>
-    				</div>
-      		</div>
-      		<div class="col-md-4 ftco-animate">
-      			<div class="cause-entry">
-    					<a href="#" class="img" style="background-image: url(images/cause-6.jpg);"></a>
-    					<div class="text p-3 p-md-4">
-    						<h3><a href="#">Ashray (Shelter for the Homeless)</a></h3>
-    						<p>Purpose: Build or maintain shelters for the homeless and abandoned elderly.</p>
-    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                <p><a href="project6.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
-                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
-    					  <button class="btn status-btn active">Active</button>
-              </div>
-    				</div>
-      		</div>
+               <br> <button class="btn status-btn {status_class}">{status}</button>
+            </div>
+        </div>
+    </div>
+    ''')
+
+print('''
         </div>
         <div class="row mt-5">
           <div class="col text-center">
