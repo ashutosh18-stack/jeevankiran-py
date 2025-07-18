@@ -33,6 +33,7 @@ print(f'''
         <li><a href="packagemaster.py"><i class="fas fa-box"></i><span>Package Master</span></a></li>
         <li><a href="#"><i class="fas fa-hand-holding-heart"></i><span>Donation Master</span></a></li>
         <li><a href="#"><i class="fas fa-bullhorn"></i><span>Special Campaigns</span></a></li>
+        <li><a href="volunteermaster.py"><i class="fa-solid fa-hands-holding-child"></i><span>Volunteer List</span></a></li>
         <li><a href="#"><i class="fas fa-user-friends"></i><span>Donors</span></a></li>
         <li><a href="#"><i class="fas fa-receipt"></i><span>Receipts</span></a></li>
         <li><a href="#"><i class="fas fa-birthday-cake"></i><span>Birthdays</span></a></li>

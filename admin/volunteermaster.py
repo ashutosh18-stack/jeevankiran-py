@@ -1,0 +1,39 @@
+#!C:\Python312\python.exe
+import cgi
+import cgitb
+cgitb.enable()
+import header
+
+print('''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NGO Master Menu</title>
+  <link rel="stylesheet" href="style/projectmaster.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1><i class="fas fa-hands-helping"></i> Volunteer Master Panel</h1>
+    
+    <div class="card-wrapper">
+
+      <!-- NGO List -->
+      <div class="card" onclick="goTo('volunteerlist.py')">
+        <i class="fas fa-list icon"></i>
+        <h2>Volunteer List</h2>
+        <p>View volunteer from the system</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function goTo(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+</html>
+''')

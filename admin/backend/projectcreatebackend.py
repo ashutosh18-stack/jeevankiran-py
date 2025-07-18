@@ -20,7 +20,7 @@ project_folder_path = os.path.join(base_dir, project_folder_name)
 if not os.path.exists(project_folder_path):
     os.makedirs(project_folder_path)
 
-image_fields = ["image1", "image2", "image3"]
+image_fields = ["image1"]
 saved_image_names = []
 
 for index, field_name in enumerate(image_fields, start=1):
