@@ -39,7 +39,7 @@ print('''
 
 <div class="login-form">
   <h2>Login to Your Account</h2>
-  <form action="loginbackend.py" method="post">
+  <form action="backend/loginbackend.py" method="post">
     <div class="form-group">
       <label for="phone">Phone Number</label>
       <input type="tel" class="form-control" id="phonenumber" name="phonenumber" required>

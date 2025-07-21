@@ -39,7 +39,7 @@ print('''
 
 <div class="signup-form">
   <h2>Create Your Account</h2>
-  <form action="signupbackend.py" method="post">
+  <form action="backend/signupbackend.py" method="post">
     <div class="form-group">
       <label for="name">Full Name</label>
       <input type="text" class="form-control" id="fullname" name="fullname" required>

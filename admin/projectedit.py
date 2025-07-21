@@ -25,7 +25,6 @@ project_title = myresult[1]
 project_description = myresult[2]
 project_status = myresult[3]
 
-# ✅ Use project_id as folder name (not project_title)
 folder_name = str(project_id)
 img1 = f"{folder_name}/{myresult[4]}" if myresult[4] else ""
 img2 = f"{folder_name}/{myresult[5]}" if myresult[5] else ""

@@ -32,6 +32,9 @@ print('''
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+      
+
+
   </head>
   <body>
     
@@ -67,7 +70,7 @@ print('''
               <div class="text">
               	<h3 class="mb-4">Donate Money</h3>
               	<p>A small amount from you can be a big change for them.</p>
-              	<p><a href="#" class="btn btn-white px-3 py-2 mt-2">Donate Now</a></p>
+              	<p><a href="donateamt.py" class="btn btn-white px-3 py-2 mt-2">Donate Now</a></p>
               </div>
             </div>
           </div>
@@ -76,7 +79,7 @@ print('''
               <div class="text">
               	<h3 class="mb-4">Be a Volunteer</h3>
               	<p>Join the movement — volunteer with us!</p>
-              	<p><a href="#" class="btn btn-white px-3 py-2 mt-2">Be A Volunteer</a></p>
+              	<p><a href="volunteer.py" class="btn btn-white px-3 py-2 mt-2">Be A Volunteer</a></p>
               </div>
             </div>
           </div>
@@ -452,7 +455,7 @@ print('''
     		</div>
     		<div class="col-md-6 volunteer pl-md-5 ftco-animate">
     			<h3 class="mb-3">Be a volunteer</h3>
-    			<form action="#" class="volunter-form">
+    			<form action="backend/volunteerbackend.py" class="volunter-form">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Your Name">
             </div>

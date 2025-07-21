@@ -58,7 +58,7 @@ print('''
           <img src="images/books.jpg" alt="Books" class="project-img mb-3">
           <h5>Books</h5>
           <p>Help children with note books, story books, school books , and more.</p>
-          <button class="btn btn-primary">Donate</button>
+          <a href="projectdonor.py"><button class="btn btn-primary">Donate</button></a>
         </div>
       </div>
       <div class="col-md-3 mb-4">

@@ -109,8 +109,8 @@ for x in results:
         <td>{desc}</td>
         <td>{status}</td>
         <td class="actions">
-          <a href="projectedit.py?project_id={package_id}" class="edit"><i class="fas fa-edit"></i></a>
-          <a href="backend/projectmasterdelete.py?project_id={package_id}" class="delete"><i class="fas fa-trash-alt"></i></a>
+          <a href="packageedit.py?package_id={package_id}" class="edit"><i class="fas fa-edit"></i></a>
+          <a href="backend/packagemasterdelete.py?package_id={package_id}" class="delete"><i class="fas fa-trash-alt"></i></a>
         </td> 
       </tr>
     ''')

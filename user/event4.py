@@ -38,7 +38,7 @@ print('''
   <body>
       
 
-      <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+     <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -52,7 +52,6 @@ print('''
 
 
 
-<!--  Welcome to JeevanKiran Harit Bharat -->
 <section class="ftco-section">
   <div class="container">
     <div class="row d-flex">
@@ -60,47 +59,49 @@ print('''
         <div class="img img-about align-self-stretch" style="background-image: url(images/bg_3.jpg); width: 100%;"></div>
       </div>
       <div class="col-md-6 pl-md-5 ftco-animate">
-        <h2 class="mb-4">Welcome to JeevanKiran Harit Bharat</h2>
+        <h2 class="mb-4">Welcome to JeevanKiran Nari Shakti</h2>
         <p>
-          JeevanKiran Harit Bharat is a green initiative focused on restoring ecological balance and promoting sustainable living. Through afforestation, waste reduction, and eco-awareness campaigns, we aim to nurture a cleaner, greener, and healthier India.
+          JeevanKiran Nari Shakti is a dedicated initiative empowering women through education, skill development, and self-reliance programs. Our mission is to foster confidence, independence, and leadership among women, helping them transform their lives and communities.
         </p>
         <p>
-          This campaign is not just about planting trees — it’s about planting hope for future generations by fostering eco-conscious communities and protecting our natural resources.
+          This campaign is more than empowerment — it’s about unlocking potential, breaking barriers, and creating opportunities for women to shine with dignity and strength.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!--  Harit Bharat Objectives -->
+
+      
+      <!--  JeevanKiran Nari Shakti Objectives -->
 <section style="background-color: #f8f9fa; padding: 60px 0;">
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-leaf" aria-hidden="true"></i> Our Objectives</h2>
+    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-heartbeat" aria-hidden="true"></i> Our Objectives</h2>
     <p style="font-size: 16px; color: #555; margin-bottom: 30px;">
-      Harit Bharat is committed to restoring the environment through collective action and sustainable practices across communities.
+      JeevanKiran Nari Shakti aims to uplift and empower women through education, skill development, and opportunities that foster financial independence and social equality.
     </p>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Organize large-scale tree plantation drives</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Promote eco-friendly practices in rural and urban areas</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Conduct workshops on waste management and composting</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Encourage community participation in climate action</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Collaborate with schools to build green consciousness in youth</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Provide vocational training and self-employment opportunities</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Support women-led small businesses with resources and mentorship</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Promote education for girls and young women in rural areas</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Conduct awareness programs on health, hygiene, and rights</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Build self-help groups and leadership programs for women</li>
     </ul>
   </div>
 </section>
 
-<!--  How You Can Support Harit Bharat -->
+<!--  How You Can Support JeevanKiran Nari Shakti -->
 <section style="background-color: #fff; padding: 60px 0;">
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-handshake-o" aria-hidden="true"></i> How You Can Support Harit Bharat</h2>
+    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-handshake-o" aria-hidden="true"></i> How You Can Support Nari Shakti</h2>
     <p style="font-size: 16px; color: #555; margin-bottom: 30px;">
-      Become a green guardian — your actions matter. Here's how you can support Harit Bharat:
+      Help women rewrite their stories through support and solidarity. Here's how you can contribute:
     </p>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"><strong>Donate</strong> — just <i class="fa fa-inr" aria-hidden="true"></i>100 plants a tree and nurtures it</li>
-      <li style="margin-bottom: 12px;">Sponsor eco-kits and green drives in schools</li>
-      <li style="margin-bottom: 12px;">Volunteer in plantation events and clean-up campaigns</li>
-      <li style="margin-bottom: 12px;">Raise awareness and advocate for sustainable living</li>
+      <li style="margin-bottom: 12px;"><strong>Donate</strong> — even <i class="fa fa-inr" aria-hidden="true"></i> 100 supports training for a woman</li>
+      <li style="margin-bottom: 12px;">Sponsor skill development and start-up kits</li>
+      <li style="margin-bottom: 12px;">Volunteer as a mentor or speaker in empowerment workshops</li>
+      <li style="margin-bottom: 12px;">Spread awareness and advocate for gender equality</li>
     </ul>
   </div>
 </section>
@@ -108,12 +109,12 @@ print('''
 <!--  What Your Contribution Does -->
 <section style="background-color: #f1f9f6; padding: 60px 0;">
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-tree" aria-hidden="true"></i> What Your Contribution Does</h2>
+    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-gift" aria-hidden="true"></i> What Your Contribution Does</h2>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>300:</strong> Plants and maintains a tree for 1 year</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>500:</strong> Sponsors green kits for school eco-clubs</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>1,000:</strong> Funds composting and waste segregation workshops</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>5,000+:</strong> Enables full-scale community green drives</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>300:</strong> Provides basic materials for skill training</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>500:</strong> Covers travel and meals for workshop participants</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>1,000:</strong> Funds starter kits for tailoring, beauty, or crafts</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>5,000+:</strong> Supports long-term business mentorship or education for women entrepreneurs</li>
     </ul>
   </div>
 </section>
@@ -123,14 +124,13 @@ print('''
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
     <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-bar-chart" aria-hidden="true"></i> Impact So Far</h2>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"> 5,000+ trees planted across urban and rural zones</li>
-      <li style="margin-bottom: 12px;"> 80+ eco-awareness sessions held in schools and colleges</li>
-      <li style="margin-bottom: 12px;"> 30+ clean-up and waste reduction drives conducted</li>
-      <li style="margin-bottom: 12px;"> 150+ volunteers engaged in environmental missions</li>
+      <li style="margin-bottom: 12px;"> 250+ women trained in vocational skills</li>
+      <li style="margin-bottom: 12px;"> 120+ women started their own micro-enterprises</li>
+      <li style="margin-bottom: 12px;"> 80+ awareness workshops conducted on health and rights</li>
+      <li style="margin-bottom: 12px;"> 60+ volunteers contributed to empowerment programs</li>
     </ul>
   </div>
 </section>
-
 
 
 

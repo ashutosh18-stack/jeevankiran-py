@@ -34,74 +34,65 @@ print('''
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-
     
-    <div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+    
+    <div class="hero-wrap" style="background-image: url('images/bg_6.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-             <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Contact Us</h1>
+             <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Donate</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Donations</h1>
           </div>
         </div>
       </div>
     </div>
 
-    
-    <section class="ftco-section contact-section ftco-degree-bg">
-      <div class="container">
-        <div class="row d-flex mb-5 contact-info">
-          <div class="col-md-12 mb-4">
-            <h2 class="h4">Contact Information</h2>
-          </div>
-          <div class="w-100"></div>
-          <div class="col-md-3">
-            <p><span>Address:</span> rajarampuri 3th lane , kolhapur</p>
-          </div>
-          <div class="col-md-3">
-            <p><span>Phone:</span> <a href="tel://1234567920">+ 12345678</a></p>
-          </div>
-          <div class="col-md-3">
-            <p><span>Email:</span> <a href="mailto:info@yoursite.com">jeevankiran@gmail.com</a></p>
-          </div>
-          <div class="col-md-3">
-            <p><span>Website</span> <a href="#">jeevankiran.com</a></p>
-          </div>
-        </div>
-         <div class="row block-9">
-          <div class="col-md-6 pr-md-5">
-          	<h4 class="mb-4">Do you have any questions?</h4>
-            <form action="backend/contactbankend.py" method="post">
-              <div class="form-group">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" id="email" name="email"  placeholder="Your Email" required>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" id="subject" name="subject"  placeholder="Subject" required>
-              </div>
-              <div class="form-group">
-                <input type="text"  cols="30" rows="7" id="message" name="message"  class="form-control" placeholder="Message" required>
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-              </div>
-            </form>
-          
-          </div>
 
-          <div class="col-md-6 pr-md-5">
-           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.6065770687765!2d74.2396378749184!3d16.69655948407757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc1003e30120175%3A0x4fe675f2548416fd!2sWolfox%20Services%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1752420614258!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-        </div>
+<section class="ftco-section-3 img" style="background-image: url(images/bg_3.jpg);">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row d-md-flex">
+      <div class="col-md-6 d-flex ftco-animate">
+        <div class="img img-2 align-self-stretch" style="background-image: url(images/bg_4.jpg);"></div>
       </div>
-    </section>
-    
-  
+      <div class="col-md-6 volunteer pl-md-5 ftco-animate">
+        <h3 class="mb-3">Make a Donation</h3>
+        <form action="backend/projectdonorbackend.py" method="post" class="donation-form">
+          <div class="form-group">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="project" name="project" placeholder="Project Selected" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="item" name="item" placeholder="Item Selected" required>
+          </div>
+          <div class="form-group">
+            <input type="int" class="form-control" id="quantity" name="quantity" placeholder="Quantity" min="1" required>
+          </div>
+          <div class="form-group">
+            <input type="int" class="form-control" id="amount" name="amount" placeholder="Amount (in rupees)" min="1" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control"  cols="30" rows="3" id="message" name="message"  placeholder="Message (Optional)">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Donate Now" class="btn btn-white py-3 px-5">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- loader -->
+      
+      
+
+ <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 

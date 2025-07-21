@@ -34,7 +34,15 @@ project_folder_path = os.path.join(base_dir, str(project_id))
 if not os.path.exists(project_folder_path):
     os.makedirs(project_folder_path)
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+image_fields = ["image1"]
+=======
+# Step 4: Save images in that folder using project_title in filenames
+>>>>>>> 7f5bd1761b2c98f78cf827eb4e7ee74b32ee8462
 image_fields = ["image1", "image2", "image3"]
+>>>>>>> 06ee7a814b40a8e37a1fddfb3314324160e5bc2d
 saved_image_names = []
 
 for index, field_name in enumerate(image_fields, start=1):

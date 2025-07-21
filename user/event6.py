@@ -38,6 +38,7 @@ print('''
   <body>
       
 
+
       <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -49,87 +50,91 @@ print('''
         </div>
       </div>
     </div>
+      
+      
 
-
-
-      <section class="ftco-section">
+<!--  Welcome to JeevanKiran Jeevan Daan -->
+<section class="ftco-section">
   <div class="container">
     <div class="row d-flex">
       <div class="col-md-6 d-flex ftco-animate">
         <div class="img img-about align-self-stretch" style="background-image: url(images/bg_3.jpg); width: 100%;"></div>
       </div>
       <div class="col-md-6 pl-md-5 ftco-animate">
-        <h2 class="mb-4">Welcome to JeevanKiran Shiksha Daan</h2>
+        <h2 class="mb-4">Welcome to JeevanKiran Jeevan Daan</h2>
         <p>
-          JeevanKiran Shiksha Daan is a focused education initiative aimed at empowering underprivileged children through access to quality learning. From providing essential school supplies to sponsoring full-year tuition and digital learning support, this campaign ensures that no child is left behind due to financial hardship.
+          JeevanKiran Jeevan Daan is a life-saving campaign focused on promoting the culture of voluntary blood donation, organ donation awareness, and emergency medical aid. Every drop, every gesture, and every act of giving has the power to save lives.
         </p>
         <p>
-          Education is not just a right — it's the foundation for a better future. Shiksha Daan is about igniting the spark of learning, restoring confidence, and opening doors of opportunity to children who deserve a chance to dream and succeed.
+          This initiative is about the most generous gift — the gift of life. Through awareness drives, donor registration, and emergency support, we empower communities to become life-givers.
         </p>
       </div>
     </div>
   </div>
 </section>
-
-
-      <section style="background-color: #f8f9fa; padding: 60px 0;">
+      
+<!--  Jeevan Daan Objectives -->
+<section style="background-color: #f8f9fa; padding: 60px 0;">
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
     <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-heartbeat" aria-hidden="true"></i> Our Objectives</h2>
     <p style="font-size: 16px; color: #555; margin-bottom: 30px;">
-      Our mission is to empower underprivileged children by removing educational barriers and building a brighter future through access to quality learning.
+      Jeevan Daan aims to save lives by building a strong network of voluntary donors and raising awareness about the importance of timely donations.
     </p>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Sponsor school fees for economically disadvantaged children</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Distribute school kits including bags, books, and stationery</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Provide digital learning tools to bridge the technology gap</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Offer mentorship and academic support through volunteers</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Encourage dropout prevention and girl child education</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Organize regular blood donation camps</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Promote organ donation awareness and pledge programs</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Build an emergency donor network database</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Collaborate with hospitals and NGOs for critical care</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Educate communities on ethical and legal aspects of donation</li>
     </ul>
   </div>
 </section>
-      
 
-
-      <section style="background-color: #fff; padding: 60px 0;">
-  <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-handshake-o" aria-hidden="true"></i> How You Can Support Shiksha Daan</h2>
-    <p style="font-size: 16px; color: #555; margin-bottom: 30px;">
-      Together, we can transform young lives through education. Here's how you can contribute:
-    </p>
-    <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"> <strong>Donate</strong> — even <i class="fa fa-inr" aria-hidden="true"></i> 100 can help a child access learning material</li>
-      <li style="margin-bottom: 12px;"> Sponsor a school kit, uniform, or tuition fee for a student</li>
-      <li style="margin-bottom: 12px;"> Volunteer as a tutor, mentor, or support staff</li>
-      <li style="margin-bottom: 12px;"> Share our mission and encourage others to support children's education</li>
-    </ul>
-  </div>
-</section>
-      
-
-    <section style="background-color: #f1f9f6; padding: 60px 0;">
-  <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-money" aria-hidden="true"></i> What Your Contribution Does</h2>
-    <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>300:</strong> Provides notebooks and basic stationery for one student</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>500:</strong> Funds a full school kit (bag, books, pens, pencils)</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>1,000:</strong> Covers uniform, shoes, and hygiene supplies</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>5,000+:</strong> Supports annual tuition or digital learning access</li>
-    </ul>
-  </div>
-</section>
-      
-
+<!--  How You Can Support Jeevan Daan -->
 <section style="background-color: #fff; padding: 60px 0;">
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-globe" aria-hidden="true"></i> Impact So Far</h2>
+    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-handshake-o" aria-hidden="true"></i> How You Can Support Jeevan Daan</h2>
+    <p style="font-size: 16px; color: #555; margin-bottom: 30px;">
+      Your gift can be someone’s second chance at life. Here's how you can support Jeevan Daan:
+    </p>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"> 300+ children supported with books and school supplies</li>
-      <li style="margin-bottom: 12px;"> 150+ school kits sponsored across multiple districts</li>
-      <li style="margin-bottom: 12px;"> 40+ students provided with digital learning tools</li>
-      <li style="margin-bottom: 12px;"> 75+ volunteers engaged in teaching and mentoring programs</li>
+      <li style="margin-bottom: 12px;"><strong>Donate Blood</strong> — just one unit can save up to 3 lives</li>
+      <li style="margin-bottom: 12px;">Pledge your organs for donation</li>
+      <li style="margin-bottom: 12px;">Volunteer in donor registration and awareness camps</li>
+      <li style="margin-bottom: 12px;">Spread the word and encourage others to give the gift of life</li>
     </ul>
   </div>
 </section>
+
+<!--  What Your Contribution Does -->
+<section style="background-color: #f1f9f6; padding: 60px 0;">
+  <div style="max-width: 850px; margin: 0 auto; text-align: center;">
+    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-tint" aria-hidden="true"></i> What Your Contribution Does</h2>
+    <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>300:</strong> Supports registration and refreshments for 5 blood donors</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>500:</strong> Funds printing of 100 awareness leaflets or organ donor cards</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>1,000:</strong> Supports a small awareness camp in a local community</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>5,000+:</strong> Enables a full-fledged blood donation or organ awareness drive</li>
+    </ul>
+  </div>
+</section>
+
+<!--  Impact So Far -->
+<section style="background-color: #fff; padding: 60px 0;">
+  <div style="max-width: 850px; margin: 0 auto; text-align: center;">
+    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-bar-chart" aria-hidden="true"></i> Impact So Far</h2>
+    <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
+      <li style="margin-bottom: 12px;"> 1,200+ units of blood collected through camps</li>
+      <li style="margin-bottom: 12px;"> 800+ individuals registered as potential organ donors</li>
+      <li style="margin-bottom: 12px;"> 50+ awareness events conducted in rural and urban areas</li>
+      <li style="margin-bottom: 12px;"> 200+ volunteers trained for life-saving outreach</li>
+    </ul>
+  </div>
+</section>
+
+
+
+
 
 
 

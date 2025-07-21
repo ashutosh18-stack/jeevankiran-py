@@ -41,16 +41,6 @@ print('''
           <img src="" class="preview-img">
           <span>Upload</span>
         </label>
-        <label class="image-box">
-          <input type="file" name="image2" accept="image/*" onchange="previewImage(this)">
-          <img src="" class="preview-img">
-          <span>Upload</span>
-        </label>
-        <label class="image-box">
-          <input type="file" name="image3" accept="image/*" onchange="previewImage(this)">
-          <img src="" class="preview-img">
-          <span>Upload</span>
-        </label>
       </div>
 
       <!-- Project Title -->
@@ -62,7 +52,7 @@ print('''
       <!-- Description -->
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea id="description" name="description" placeholder="Enter project description" required></textarea>
+        <textarea id="description" name="description" placeholder="Enter project Purpose" required></textarea>
       </div>
       
       <div class="form-group">

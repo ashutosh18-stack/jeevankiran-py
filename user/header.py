@@ -4,6 +4,8 @@ import cgitb
 cgitb.enable()
 print("Content-Type: text/html\n")
 print('''
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
       <a class="navbar-brand" href="index.html">Jeevankiran</a>
@@ -20,25 +22,42 @@ print('''
           <li class="nav-item"><a href="compaign.py" class="nav-link">Compaigns</a></li>
           <li class="nav-item"><a href="contact.py" class="nav-link">Contact</a></li>
           <li class="nav-item dropdown">
-''')
+         <button class="btn btn-primary dropdown-toggle"
+        style="background-color:#fd7e14; border-radius: 50px; width: 150px; height: 40px; padding: 0;"
+        type="button" 
+        id="profileDropdown" 
+        data-bs-toggle="dropdown" 
+        aria-expanded="false">
+  <i class="fa fa-user" aria-hidden="true"style="margin-left:10px; margin-right:10px;"></i>My Profile
+</button>
+
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+    ''')
 print('''
 <script>
       var fullname=localStorage.getItem("fullname");
       if(fullname=="" || fullname==null){
-      document.write('<a href="signup.py" style="border-radius: 50px; background-color:#fd7e14; margin-right:20px;" class="btn btn-primary rounded-pill py-2 px-3">Register</a>')
+      document.write('<a href="signup.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Register</a>')
        
-   document.write('<a href="login.py" style="border-radius: 50px; background-color:#fd7e14;margin-right:-55px;" class="btn btn-primary rounded-pill py-2 px-3">Login</a>')
+   document.write('<a href="login.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Login</a>')
       }else{
-         document.write('<a href="" style="border-radius: 50px; background-color:#fd7e14; margin-right:20px;" class="btn btn-primary rounded-pill py-2 px-3" style="margin-right: 20px;">'+ fullname +'</a>')
+         document.write('<a href="" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3" style="margin-right: 20px;">'+ fullname +'</a>')
        
-        document.write('<a href="logout.py" style="border-radius: 50px; background-color:#fd7e14; margin-right:-55px;" class="btn btn-primary rounded-pill py-2 px-3">Logout</a>')
+        document.write('<a href="logout.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Logout</a>')
       }
 </script>
 ''')
 print('''
-          
-        </li>
-        </ul>
+      <script>
+  var fullname = localStorage.getItem("fullname");
+  if (fullname && fullname !== "") {
+    document.write('<li><a href="editprofile.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Edit Profile</a></li>');
+  }
+</script>
+''')
+print('''
+  </ul>
+    
       </div>
     </div>
   </nav>

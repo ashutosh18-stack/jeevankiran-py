@@ -37,7 +37,6 @@ print('''
   </head>
   <body>
       
-
      <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -49,89 +48,87 @@ print('''
         </div>
       </div>
     </div>
+      
 
 
-
-<section class="ftco-section">
+ <section class="ftco-section">
   <div class="container">
     <div class="row d-flex">
       <div class="col-md-6 d-flex ftco-animate">
         <div class="img img-about align-self-stretch" style="background-image: url(images/bg_3.jpg); width: 100%;"></div>
       </div>
       <div class="col-md-6 pl-md-5 ftco-animate">
-        <h2 class="mb-4">Welcome to JeevanKiran Nari Shakti</h2>
+        <h2 class="mb-4">Welcome to JeevanKiran Bhojan Seva</h2>
         <p>
-          JeevanKiran Nari Shakti is a dedicated initiative empowering women through education, skill development, and self-reliance programs. Our mission is to foster confidence, independence, and leadership among women, helping them transform their lives and communities.
+          JeevanKiran’s Bhojan Seva is a dedicated initiative focused on providing nutritious meals to those in need. From daily meal distributions to emergency food relief, this campaign aims to fight hunger and nourish bodies across underserved communities.
         </p>
         <p>
-          This campaign is more than empowerment — it’s about unlocking potential, breaking barriers, and creating opportunities for women to shine with dignity and strength.
+          It’s more than just food — it’s about offering hope, health, and a helping hand to those facing food insecurity, ensuring no one goes hungry in our community.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-
       
-      <!--  JeevanKiran Nari Shakti Objectives -->
-<section style="background-color: #f8f9fa; padding: 60px 0;">
+      <section style="background-color: #f8f9fa; padding: 60px 0;">
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
     <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-heartbeat" aria-hidden="true"></i> Our Objectives</h2>
     <p style="font-size: 16px; color: #555; margin-bottom: 30px;">
-      JeevanKiran Nari Shakti aims to uplift and empower women through education, skill development, and opportunities that foster financial independence and social equality.
+      Our mission is to fight hunger by providing nutritious meals and food relief to those in need, ensuring no one in our community goes hungry.
     </p>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Provide vocational training and self-employment opportunities</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Support women-led small businesses with resources and mentorship</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Promote education for girls and young women in rural areas</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Conduct awareness programs on health, hygiene, and rights</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Build self-help groups and leadership programs for women</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Daily meal distribution to underprivileged families</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Emergency food relief during crises and disasters</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Nutritional support for elderly and differently-abled</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Outreach programs in rural and underserved areas</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Collaborations with local food banks and kitchens</li>
     </ul>
   </div>
 </section>
 
-<!--  How You Can Support JeevanKiran Nari Shakti -->
-<section style="background-color: #fff; padding: 60px 0;">
+
+     <section style="background-color: #fff; padding: 60px 0;">
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-handshake-o" aria-hidden="true"></i> How You Can Support Nari Shakti</h2>
+    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-handshake-o" aria-hidden="true"></i> How You Can Support Bhojan Seva</h2>
     <p style="font-size: 16px; color: #555; margin-bottom: 30px;">
-      Help women rewrite their stories through support and solidarity. Here's how you can contribute:
+      Join us in nourishing lives and fighting hunger. Here's how you can help:
     </p>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"><strong>Donate</strong> — even <i class="fa fa-inr" aria-hidden="true"></i> 100 supports training for a woman</li>
-      <li style="margin-bottom: 12px;">Sponsor skill development and start-up kits</li>
-      <li style="margin-bottom: 12px;">Volunteer as a mentor or speaker in empowerment workshops</li>
-      <li style="margin-bottom: 12px;">Spread awareness and advocate for gender equality</li>
+      <li style="margin-bottom: 12px;"> <strong>Donate</strong> — even <i class="fa fa-inr" aria-hidden="true"></i> 100 helps provide meals to those in need</li>
+      <li style="margin-bottom: 12px;"> Sponsor meal kits for families and individuals</li>
+      <li style="margin-bottom: 12px;"> Volunteer in meal preparation and distribution</li>
+      <li style="margin-bottom: 12px;"> Spread awareness about food insecurity and our mission</li>
     </ul>
   </div>
 </section>
+      
 
-<!--  What Your Contribution Does -->
-<section style="background-color: #f1f9f6; padding: 60px 0;">
+
+     <section style="background-color: #f1f9f6; padding: 60px 0;">
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
     <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-gift" aria-hidden="true"></i> What Your Contribution Does</h2>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>300:</strong> Provides basic materials for skill training</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>500:</strong> Covers travel and meals for workshop participants</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>1,000:</strong> Funds starter kits for tailoring, beauty, or crafts</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>5,000+:</strong> Supports long-term business mentorship or education for women entrepreneurs</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>300:</strong> Provides a week's worth of meals for a family</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>500:</strong> Funds meal kits for 10 individuals</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>1,000:</strong> Supports community kitchen operations for a day</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>5,000+:</strong> Enables large-scale food relief during emergencies</li>
     </ul>
   </div>
 </section>
+      
 
-<!--  Impact So Far -->
-<section style="background-color: #fff; padding: 60px 0;">
+    <section style="background-color: #fff; padding: 60px 0;">
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-bar-chart" aria-hidden="true"></i> Impact So Far</h2>
+    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-globe" aria-hidden="true"></i> Impact So Far</h2>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"> 250+ women trained in vocational skills</li>
-      <li style="margin-bottom: 12px;"> 120+ women started their own micro-enterprises</li>
-      <li style="margin-bottom: 12px;"> 80+ awareness workshops conducted on health and rights</li>
-      <li style="margin-bottom: 12px;"> 60+ volunteers contributed to empowerment programs</li>
+      <li style="margin-bottom: 12px;"> 800+ families received nutritious meal support</li>
+      <li style="margin-bottom: 12px;"> 50+ emergency food relief drives conducted</li>
+      <li style="margin-bottom: 12px;"> Nutritional aid provided to 200+ elderly and differently-abled</li>
+      <li style="margin-bottom: 12px;"> 100+ volunteers actively engaged in food distribution</li>
     </ul>
   </div>
 </section>
-
 
 
 

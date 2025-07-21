@@ -27,5 +27,5 @@ query =f"""INSERT INTO `signup`(`fullname`, `email`, `phonenumber`, `DateofBirth
 mycursor.execute(query)
 mydb.commit()
 print(f'''<script>alert("Registered Successfully!");
-    location.href="login.py";
+    location.href="../login.py";
     </script>''')
