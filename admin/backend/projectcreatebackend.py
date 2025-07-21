@@ -12,7 +12,6 @@ title = form.getvalue("title")
 description = form.getvalue("description")
 status = form.getvalue("status")
 
-# Step 1: Insert initial data (without images)
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -27,18 +26,14 @@ insert_sql = """
 """
 mycursor.execute(insert_sql, (title, description, status))
 mydb.commit()
-
-# Step 2: Get the inserted project_id
 project_id = mycursor.lastrowid
 
-# Step 3: Create folder using project_id
 base_dir = "projectuploads"
 project_folder_path = os.path.join(base_dir, str(project_id))
 
 if not os.path.exists(project_folder_path):
     os.makedirs(project_folder_path)
 
-# Step 4: Save images in that folder using project_title in filenames
 image_fields = ["image1", "image2", "image3"]
 saved_image_names = []
 
@@ -56,7 +51,6 @@ for index, field_name in enumerate(image_fields, start=1):
     else:
         saved_image_names.append("")
 
-# Step 5: Update image paths in DB
 update_sql = """
     UPDATE projectmaster
     SET project_img1 = %s, project_img2 = %s, project_img3 = %s
@@ -65,7 +59,6 @@ update_sql = """
 mycursor.execute(update_sql, (*saved_image_names, project_id))
 mydb.commit()
 
-# Step 6: Success message
 print('''
 <script>
     alert("Project added successfully");

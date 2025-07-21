@@ -64,8 +64,7 @@ print('''
         <label for="description">Description</label>
         <textarea id="description" name="description" placeholder="Enter project description" required></textarea>
       </div>
-
-      <!-- Status Toggle -->
+      
       <div class="form-group">
         <label>Status</label>
         <div class="switch" id="toggleSwitch">

@@ -16,7 +16,7 @@ print('''
 </head>
 <body>
   <div class="dashboard-container">
-    <h1><i class="fas fa-hands-helping"></i> Project Master Panel</h1>
+    <h1><i class="fas fa-hands-helping"></i> Package Master Panel</h1>
     
     <div class="card-wrapper">
       <!-- Add NGO -->
@@ -30,7 +30,7 @@ print('''
       <div class="card" onclick="goTo('packagelist.py')">
         <i class="fas fa-list icon"></i>
         <h2>Package List</h2>
-        <p>View, edit or delete Projects from the system</p>
+        <p>View, edit or delete Package from the system</p>
       </div>
     </div>
   </div>
