@@ -38,7 +38,6 @@ print('''
   <body>
       
 
-
       <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -50,10 +49,10 @@ print('''
         </div>
       </div>
     </div>
-      
-      
 
-<!--  Welcome to JeevanKiran Jeevan Daan -->
+
+
+<!--  Welcome to JeevanKiran Harit Bharat -->
 <section class="ftco-section">
   <div class="container">
     <div class="row d-flex">
@@ -61,47 +60,47 @@ print('''
         <div class="img img-about align-self-stretch" style="background-image: url(images/bg_3.jpg); width: 100%;"></div>
       </div>
       <div class="col-md-6 pl-md-5 ftco-animate">
-        <h2 class="mb-4">Welcome to JeevanKiran Jeevan Daan</h2>
+        <h2 class="mb-4">Welcome to JeevanKiran Harit Bharat</h2>
         <p>
-          JeevanKiran Jeevan Daan is a life-saving campaign focused on promoting the culture of voluntary blood donation, organ donation awareness, and emergency medical aid. Every drop, every gesture, and every act of giving has the power to save lives.
+          JeevanKiran Harit Bharat is a green initiative focused on restoring ecological balance and promoting sustainable living. Through afforestation, waste reduction, and eco-awareness campaigns, we aim to nurture a cleaner, greener, and healthier India.
         </p>
         <p>
-          This initiative is about the most generous gift — the gift of life. Through awareness drives, donor registration, and emergency support, we empower communities to become life-givers.
+          This campaign is not just about planting trees — it’s about planting hope for future generations by fostering eco-conscious communities and protecting our natural resources.
         </p>
       </div>
     </div>
   </div>
 </section>
-      
-<!--  Jeevan Daan Objectives -->
+
+<!--  Harit Bharat Objectives -->
 <section style="background-color: #f8f9fa; padding: 60px 0;">
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-heartbeat" aria-hidden="true"></i> Our Objectives</h2>
+    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-leaf" aria-hidden="true"></i> Our Objectives</h2>
     <p style="font-size: 16px; color: #555; margin-bottom: 30px;">
-      Jeevan Daan aims to save lives by building a strong network of voluntary donors and raising awareness about the importance of timely donations.
+      Harit Bharat is committed to restoring the environment through collective action and sustainable practices across communities.
     </p>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Organize regular blood donation camps</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Promote organ donation awareness and pledge programs</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Build an emergency donor network database</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Collaborate with hospitals and NGOs for critical care</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Educate communities on ethical and legal aspects of donation</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Organize large-scale tree plantation drives</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Promote eco-friendly practices in rural and urban areas</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Conduct workshops on waste management and composting</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Encourage community participation in climate action</li>
+      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Collaborate with schools to build green consciousness in youth</li>
     </ul>
   </div>
 </section>
 
-<!--  How You Can Support Jeevan Daan -->
+<!--  How You Can Support Harit Bharat -->
 <section style="background-color: #fff; padding: 60px 0;">
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-handshake-o" aria-hidden="true"></i> How You Can Support Jeevan Daan</h2>
+    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-handshake-o" aria-hidden="true"></i> How You Can Support Harit Bharat</h2>
     <p style="font-size: 16px; color: #555; margin-bottom: 30px;">
-      Your gift can be someone’s second chance at life. Here's how you can support Jeevan Daan:
+      Become a green guardian — your actions matter. Here's how you can support Harit Bharat:
     </p>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"><strong>Donate Blood</strong> — just one unit can save up to 3 lives</li>
-      <li style="margin-bottom: 12px;">Pledge your organs for donation</li>
-      <li style="margin-bottom: 12px;">Volunteer in donor registration and awareness camps</li>
-      <li style="margin-bottom: 12px;">Spread the word and encourage others to give the gift of life</li>
+      <li style="margin-bottom: 12px;"><strong>Donate</strong> — just <i class="fa fa-inr" aria-hidden="true"></i>100 plants a tree and nurtures it</li>
+      <li style="margin-bottom: 12px;">Sponsor eco-kits and green drives in schools</li>
+      <li style="margin-bottom: 12px;">Volunteer in plantation events and clean-up campaigns</li>
+      <li style="margin-bottom: 12px;">Raise awareness and advocate for sustainable living</li>
     </ul>
   </div>
 </section>
@@ -109,12 +108,12 @@ print('''
 <!--  What Your Contribution Does -->
 <section style="background-color: #f1f9f6; padding: 60px 0;">
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-tint" aria-hidden="true"></i> What Your Contribution Does</h2>
+    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-tree" aria-hidden="true"></i> What Your Contribution Does</h2>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>300:</strong> Supports registration and refreshments for 5 blood donors</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>500:</strong> Funds printing of 100 awareness leaflets or organ donor cards</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>1,000:</strong> Supports a small awareness camp in a local community</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>5,000+:</strong> Enables a full-fledged blood donation or organ awareness drive</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>300:</strong> Plants and maintains a tree for 1 year</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>500:</strong> Sponsors green kits for school eco-clubs</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>1,000:</strong> Funds composting and waste segregation workshops</li>
+      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>5,000+:</strong> Enables full-scale community green drives</li>
     </ul>
   </div>
 </section>
@@ -124,14 +123,13 @@ print('''
   <div style="max-width: 850px; margin: 0 auto; text-align: center;">
     <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-bar-chart" aria-hidden="true"></i> Impact So Far</h2>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"> 1,200+ units of blood collected through camps</li>
-      <li style="margin-bottom: 12px;"> 800+ individuals registered as potential organ donors</li>
-      <li style="margin-bottom: 12px;"> 50+ awareness events conducted in rural and urban areas</li>
-      <li style="margin-bottom: 12px;"> 200+ volunteers trained for life-saving outreach</li>
+      <li style="margin-bottom: 12px;"> 5,000+ trees planted across urban and rural zones</li>
+      <li style="margin-bottom: 12px;"> 80+ eco-awareness sessions held in schools and colleges</li>
+      <li style="margin-bottom: 12px;"> 30+ clean-up and waste reduction drives conducted</li>
+      <li style="margin-bottom: 12px;"> 150+ volunteers engaged in environmental missions</li>
     </ul>
   </div>
 </section>
-
 
 
 

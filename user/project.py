@@ -6,19 +6,7 @@ import mysql.connector
 import os
 
 cgitb.enable()
-
-# Connect DB
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="jeevankiran"
-)
-mycursor = mydb.cursor(dictionary=True)
-
-query = "SELECT * FROM projectmaster"
-mycursor.execute(query)
-results = mycursor.fetchall()
+import header
 print('''
 <!DOCTYPE html>
 <html lang="en">
@@ -81,37 +69,27 @@ print('''
     <section class="ftco-section">
       <div class="container">
       	<div class="row">
-''')
-for x in results:
-    project_title = x['project_title']
-    desc = x['project_description']
-    status = x['status']
-    img1 = x['project_img1']
-print(f'''
       		<div class="col-md-4 ftco-animate">
       			<div class="cause-entry">
     					<a href="#" class="img" style="background-image: url(images/cause-1.jpg);"></a>
     					<div class="text p-3 p-md-4">
-      
-    						<h3><a href="project1.py">{project_title}</a></h3>
-    						<p>{desc}</p>
+    						<h3><a href="#">Shiksha Daan (Gift of Education)</a></h3>
+    						<p>Purpose: Provide education kits, school fees, and mentorship to underprivileged children.</p>
     						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
                 <p><a href="project1.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
                 <div class="progress custom-progress-success">
                   <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
-                <button class="btn status-btn active">{status}</button>
+                <button class="btn status-btn active">Active</button>
     					</div>
     				</div>
       		</div>
-''')
-print('''
       		<div class="col-md-4 ftco-animate">
       			<div class="cause-entry">
     					<a href="#" class="img" style="background-image: url(images/cause-2.jpg);"></a>
     					<div class="text p-3 p-md-4">
-    						<h3><a href="project2.py">Jeevan Daan (Health & Medical Aid)</a></h3>
+    						<h3><a href="#">Jeevan Daan (Health & Medical Aid)</a></h3>
     						<p>Purpose: Support free medical checkups, surgeries, and health camps.</p>
     						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
                 <p><a href="project2.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
@@ -127,7 +105,7 @@ print('''
       			<div class="cause-entry">
     					<a href="#" class="img" style="background-image: url(images/cause-3.jpg);"></a>
     					<div class="text p-3 p-md-4">
-    						<h3><a href="project3.py">Bhojan Seva (Food Distribution Program)</a></h3>
+    						<h3><a href="#">Bhojan Seva (Food Distribution Program)</a></h3>
     						<p>Purpose: Distribute nutritious meals to homeless families, children, and the elderly.</p>
     						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
                 <p><a href="project3.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
@@ -159,7 +137,7 @@ print('''
       			<div class="cause-entry">
     					<a href="#" class="img" style="background-image: url(images/cause-5.jpg);"></a>
     					<div class="text p-3 p-md-4">
-    						<h3><a href="project5.py">Harit Bharat (Green India Campaign)</a></h3>
+    						<h3><a href="#">Harit Bharat (Green India Campaign)</a></h3>
     						<p>Purpose: Organize tree plantations, clean-up drives, and eco-awareness programs.</p>
     						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
                 <p><a href="project5.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>
@@ -175,7 +153,7 @@ print('''
       			<div class="cause-entry">
     					<a href="#" class="img" style="background-image: url(images/cause-6.jpg);"></a>
     					<div class="text p-3 p-md-4">
-    						<h3><a href="project6.py">Ashray (Shelter for the Homeless)</a></h3>
+    						<h3><a href="#">Ashray (Shelter for the Homeless)</a></h3>
     						<p>Purpose: Build or maintain shelters for the homeless and abandoned elderly.</p>
     						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
                 <p><a href="project6.py">Donate <i class="ion-ios-arrow-forward"></i></a></p>

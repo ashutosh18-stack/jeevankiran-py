@@ -65,7 +65,7 @@ print('''
                 <h3 class="heading mb-4"><a href="#">Jeevankiran Ray of Hope</a></h3>
                 <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
                 <p>Purpose: General fundraising for education, health, or emergency relief.</p>
-                <p><a href="event.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
+                <p><a href="event1.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@ print('''
                 <h3 class="heading mb-4"><a href="#">Jeevankiran Shiksha Daan</a></h3>
                 <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
                 <p>Purpose: Sponsor education for underprivileged children.</p>
-                <p><a href="event1.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
+                <p><a href="event2.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
               </div>
             </div>
           </div>
@@ -99,7 +99,7 @@ print('''
                 <h3 class="heading mb-4"><a href="#">Jeevankiran Bhojan Seva</a></h3>
                 <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
                 <p>Purpose: Distribute food packets to needy families or street children.</p>
-                <p><a href="event2.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
+                <p><a href="event3.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
               </div>
             </div>
           </div>
@@ -116,7 +116,7 @@ print('''
                 <h3 class="heading mb-4"><a href="#">Jeevankiran Nari Shakti </a></h3>
                 <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
                 <p>Purpose: Support skill training, hygiene, and self-help programs for women.</p>
-                <p><a href="event3.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
+                <p><a href="event4.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ print('''
                 <h3 class="heading mb-4"><a href="#">Jeevankiran Harit Bharat</a></h3>
                 <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
                 <p>Purpose: Tree plantations, clean-ups, and eco-awareness drives.</p>
-                <p><a href="event4.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
+                <p><a href="event5.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
               </div>
             </div>
           </div>
@@ -150,7 +150,7 @@ print('''
                 <h3 class="heading mb-4"><a href="#">Jeevankiran Jeevan Daan</a></h3>
                 <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
                 <p>Purpose: Provide free medical checkups, blood donations, or support surgeries.</p>
-                <p><a href="event5.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
+                <p><a href="event6.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
               </div>
             </div>
           </div>

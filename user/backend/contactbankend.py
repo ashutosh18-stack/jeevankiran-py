@@ -10,6 +10,8 @@ name=form.getvalue("name")
 #print(name)
 email=form.getvalue("email") 
 #print(email)
+subject=form.getvalue("subject")
+#print(subject)
 message=form.getvalue("message")
 #print(message)
 mydb = mysql.connector.connect(
@@ -18,12 +20,12 @@ mydb = mysql.connector.connect(
     password="",  
     database="jeevankiran")
 mycursor = mydb.cursor()
-query =f"""INSERT INTO `volunteer`(`name`, `email`, `message`) VALUES ('{name}','{email}','{message}')"""
+query =f"""INSERT INTO `contact`(`name`, `email`, `subject`, `message`) VALUES ('{name}','{email}','{subject}','{message}')"""
 #print(query)
 mycursor.execute(query)
 mydb.commit()
-print(f'''<script>alert("Registered Successfully!");
-    location.href="../compaign.py";
+print(f'''<script>alert("Message Send Successfully!");
+    location.href="../contact.py";
     </script>''')
 
 

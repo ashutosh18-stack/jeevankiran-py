@@ -9160,3 +9160,13 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+
+     .status-btn.active {
+        background-color: orange;
+        color: white;
+      }
+      .status-btn.inactive {
+        background-color: grey;
+        color: white;
+      }

@@ -2,7 +2,129 @@
 import cgi
 import cgitb
 cgitb.enable()
+import mysql.connector
 import header
+form =cgi.FieldStorage()
+project_id=form.getvalue('project_id')
+
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="",
+    database="jeevankiran"
+)
+cursor = mydb.cursor(dictionary=True)
+
+# Fetch project details
+cursor.execute(f"SELECT * FROM projectmaster WHERE project_id = '{project_id}'")
+project = cursor.fetchone()
+
+project_title = project['project_title']
+id = project['project_id']
+image = project['project_img2'];
+image2 =project['project_img3'];
+image_path= f''' ../admin/backend/projectuploads/{id}/{image}'''
+image_path2= f''' ../admin/backend/projectuploads/{id}/{image2}'''
+print('''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hero Slider Scrolling</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1c1c1c;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .hero-wrap {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slider {
+      display: flex;
+      width: 200%;
+      height: 100%;
+      animation: slideLeft 20s linear infinite;
+    }
+
+    .slide {
+      flex: 0 0 50%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(1.0);
+    }
+
+   
+
+    @keyframes slideLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 100px; /* 100px from the top of the hero section */
+      width: 100%;
+ background:  rgba(88, 81, 81, 0.458);    color: white;
+      padding: 20px 10px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      z-index: 2;
+      border-bottom: 2px solid orange;
+      text-transform: uppercase;
+    }
+
+    .overlay-text span {
+      color: white;
+    }
+
+    @media screen and (max-width: 768px) {
+      .overlay-text {
+        font-size: 1.2rem;
+        padding: 15px;
+      }
+    }
+
+    
+  </style>
+</head>
+<body>
+''')
+
+     
+
+
+
+print(f'''
+  <div class="hero-wrap">
+    <div class="slider">
+      <div class="slide slide1" style="background-image: url('{image_path}');"></div>
+      <div class="slide slide2" style="background-image: url('{image_path2}');"></div>
+    </div>
+    <div class="overlay-text"><span>{project_title}</span></div>
+  </div>
+
+  
+
+</body>
+</html>
+''')
 print('''
 <!DOCTYPE html>
 <html lang="en">
@@ -42,12 +164,10 @@ print('''
 </head>
 <body>
 
-<div class="hero-wrap" style="background-image: url('images/bg_1.jpg'); height: 250px;">
-  <div class="overlay"></div>
-  <div class="container text-center d-flex justify-content-center align-items-center" style="height: 250px;">
-    <h1 class="text-white">Charity Project Packages</h1>
-  </div>
-</div>
+''')
+
+print(f'''
+ 
 
 <section class="ftco-section">
   <div class="container">
@@ -58,7 +178,7 @@ print('''
           <img src="images/books.jpg" alt="Books" class="project-img mb-3">
           <h5>Books</h5>
           <p>Help children with note books, story books, school books , and more.</p>
-          <a href="projectdonor.py"><button class="btn btn-primary">Donate</button></a>
+          <button class="btn btn-primary">Donate</button>
         </div>
       </div>
       <div class="col-md-3 mb-4">

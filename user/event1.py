@@ -38,7 +38,7 @@ print('''
   <body>
       
 
-      <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+          <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -51,89 +51,135 @@ print('''
     </div>
 
 
-
-      <section class="ftco-section">
+      
+<section class="ftco-section">
+    	<div class="container">
+    		<div class="row d-flex">
+    			<div class="col-md-6 d-flex ftco-animate">
+    				<div class="img img-about align-self-stretch" style="background-image: url(images/bg_3.jpg); width: 100%;"></div>
+    			</div>
+    			<div class="col-md-6 pl-md-5 ftco-animate">
+    				<h2 class="mb-4">Welcome to Jeevankiran Ray of Hope</h2>
+    				<p>JeevanKiran’s Ray of Hope is our flagship fundraising and outreach campaign, dedicated to supporting individuals and families in critical need. From a child’s first schoolbag to a family’s medical emergency, this campaign is designed to bring hope where it’s needed most — swiftly, compassionately, and without barriers.
+                       It’s not just about charity — it’s about restoring dignity, opening doors to opportunity, and being a lifeline in difficult times.</p>
+    				
+    			</div>
+    		</div>
+    	</div>
+    </section>
+      
+   <section class="ftco-section bg-light">
   <div class="container">
-    <div class="row d-flex">
-      <div class="col-md-6 d-flex ftco-animate">
-        <div class="img img-about align-self-stretch" style="background-image: url(images/bg_3.jpg); width: 100%;"></div>
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-8 text-center heading-section ftco-animate">
+        <h2 class="mb-4"><i class="fa fa-heartbeat" aria-hidden="true"></i> Our Objectives</h2>
+        <p>Our mission is to reach where help is needed the most — with compassion, speed, and impact.</p>
       </div>
-      <div class="col-md-6 pl-md-5 ftco-animate">
-        <h2 class="mb-4">Welcome to JeevanKiran Shiksha Daan</h2>
-        <p>
-          JeevanKiran Shiksha Daan is a focused education initiative aimed at empowering underprivileged children through access to quality learning. From providing essential school supplies to sponsoring full-year tuition and digital learning support, this campaign ensures that no child is left behind due to financial hardship.
-        </p>
-        <p>
-          Education is not just a right — it's the foundation for a better future. Shiksha Daan is about igniting the spark of learning, restoring confidence, and opening doors of opportunity to children who deserve a chance to dream and succeed.
-        </p>
+    </div>
+    <div class="row ftco-animate justify-content-center">
+      <div class="col-md-8">
+        <ul style="list-style: none; padding-left: 0; margin: 0 auto; max-width: 600px; text-align: left;">
+          <li style="font-size: 18px; margin-bottom: 12px; position: relative; padding-left: 28px;">
+            <i class="fa fa-arrow-right" aria-hidden="true" style="position: absolute; left: 0; top: 2px; color: #147b5a;"></i>
+            Emergency relief for food, shelter, and medicines
+          </li>
+          <li style="font-size: 18px; margin-bottom: 12px; position: relative; padding-left: 28px;">
+            <i class="fa fa-arrow-right" aria-hidden="true" style="position: absolute; left: 0; top: 2px; color: #147b5a;"></i>
+            Educational support for underprivileged children
+          </li>
+          <li style="font-size: 18px; margin-bottom: 12px; position: relative; padding-left: 28px;">
+            <i class="fa fa-arrow-right" aria-hidden="true" style="position: absolute; left: 0; top: 2px; color: #147b5a;"></i>
+            Nutritious meals for the needy
+          </li>
+          <li style="font-size: 18px; margin-bottom: 12px; position: relative; padding-left: 28px;">
+            <i class="fa fa-arrow-right" aria-hidden="true" style="position: absolute; left: 0; top: 2px; color: #147b5a;"></i>
+            Aid for the elderly and differently-abled
+          </li>
+          <li style="font-size: 18px; margin-bottom: 12px; position: relative; padding-left: 28px;">
+            <i class="fa fa-arrow-right" aria-hidden="true" style="position: absolute; left: 0; top: 2px; color: #147b5a;"></i>
+            Outreach to rural and underserved communities
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-
-      <section style="background-color: #f8f9fa; padding: 60px 0;">
-  <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-heartbeat" aria-hidden="true"></i> Our Objectives</h2>
-    <p style="font-size: 16px; color: #555; margin-bottom: 30px;">
-      Our mission is to empower underprivileged children by removing educational barriers and building a brighter future through access to quality learning.
+      
+        <section style="background-color: #f8f9fa; padding: 60px 0;">
+  <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+    <h2 style="font-size: 32px; margin-bottom: 20px;"><i class="fa fa-handshake-o" aria-hidden="true"></i> How You Can Help</h2>
+    <p style="font-size: 16px; color: #555; margin-bottom: 40px;">
+      Together, we can change lives. Here's how you can contribute:
     </p>
     <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Sponsor school fees for economically disadvantaged children</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Distribute school kits including bags, books, and stationery</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Provide digital learning tools to bridge the technology gap</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Offer mentorship and academic support through volunteers</li>
-      <li style="margin-bottom: 12px;"><i class="fa fa-arrow-right" aria-hidden="true"></i> Encourage dropout prevention and girl child education</li>
+      <li style="margin-bottom: 15px; position: relative; padding-left: 30px;">
+        <span style="position: absolute; left: 0; color: #147b5a;"></span>
+        <strong>Donate</strong> — even <i class="fa fa-inr" aria-hidden="true"></i> 100 can make a difference
+      </li>
+      <li style="margin-bottom: 15px; position: relative; padding-left: 30px;">
+        <span style="position: absolute; left: 0; color: #147b5a;"></span>
+        Sponsor a child, meal, or medicine kit
+      </li>
+      <li style="margin-bottom: 15px; position: relative; padding-left: 30px;">
+        <span style="position: absolute; left: 0; color: #147b5a;"></span>
+        Volunteer for on-ground distribution drives
+      </li>
+      <li style="margin-bottom: 15px; position: relative; padding-left: 30px;">
+        <span style="position: absolute; left: 0; color: #147b5a;"></span>
+        Spread the word and inspire others to join the mission
+      </li>
     </ul>
   </div>
 </section>
+
+
+      
+      <section style="background-color: #f1f9f6; padding: 50px 0;">
+  <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <h2 style="font-size: 30px; margin-bottom: 30px;"><i class="fa fa-money" aria-hidden="true"></i> What Your Contribution Does</h2>
+    <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
+      <li style="margin-bottom: 15px;">
+        <strong><i class="fa fa-inr" aria-hidden="true"></i>300:</strong> Provides a week’s groceries for a family
+      </li>
+      <li style="margin-bottom: 15px;">
+        <strong><i class="fa fa-inr" aria-hidden="true"></i>500:</strong> Funds a school kit for a child
+      </li>
+      <li style="margin-bottom: 15px;">
+        <strong><i class="fa fa-inr" aria-hidden="true"></i>1,000:</strong> Covers one basic health check-up and medicine kit
+      </li>
+      <li style="margin-bottom: 15px;">
+        <strong><i class="fa fa-inr" aria-hidden="true"></i>5,000+:</strong> Supports urgent medical or housing aid
+      </li>
+    </ul>
+  </div>
+</section>
+
+      
+      <section style="background-color: #fff; padding: 50px 0;">
+  <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <h2 style="font-size: 30px; margin-bottom: 30px;"><i class="fa fa-globe" aria-hidden="true"></i> Impact So Far</h2>
+    <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
+      <li style="margin-bottom: 15px;">
+        800+ families received ration support
+      </li>
+      <li style="margin-bottom: 15px;">
+        300+ children supported with books and school supplies
+      </li>
+      <li style="margin-bottom: 15px;">
+        50+ urgent medical cases assisted
+      </li>
+      <li style="margin-bottom: 15px;">
+        100+ volunteers engaged in outreach efforts
+      </li>
+    </ul>
+  </div>
+</section>
+
       
 
-
-      <section style="background-color: #fff; padding: 60px 0;">
-  <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-handshake-o" aria-hidden="true"></i> How You Can Support Shiksha Daan</h2>
-    <p style="font-size: 16px; color: #555; margin-bottom: 30px;">
-      Together, we can transform young lives through education. Here's how you can contribute:
-    </p>
-    <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"> <strong>Donate</strong> — even <i class="fa fa-inr" aria-hidden="true"></i> 100 can help a child access learning material</li>
-      <li style="margin-bottom: 12px;"> Sponsor a school kit, uniform, or tuition fee for a student</li>
-      <li style="margin-bottom: 12px;"> Volunteer as a tutor, mentor, or support staff</li>
-      <li style="margin-bottom: 12px;"> Share our mission and encourage others to support children's education</li>
-    </ul>
-  </div>
-</section>
       
-
-    <section style="background-color: #f1f9f6; padding: 60px 0;">
-  <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-money" aria-hidden="true"></i> What Your Contribution Does</h2>
-    <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>300:</strong> Provides notebooks and basic stationery for one student</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>500:</strong> Funds a full school kit (bag, books, pens, pencils)</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>1,000:</strong> Covers uniform, shoes, and hygiene supplies</li>
-      <li style="margin-bottom: 12px;"><strong><i class="fa fa-inr" aria-hidden="true"></i>5,000+:</strong> Supports annual tuition or digital learning access</li>
-    </ul>
-  </div>
-</section>
-      
-
-<section style="background-color: #fff; padding: 60px 0;">
-  <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 30px; margin-bottom: 20px;"><i class="fa fa-globe" aria-hidden="true"></i> Impact So Far</h2>
-    <ul style="list-style: none; padding: 0; font-size: 18px; text-align: left; margin: 0 auto; max-width: 600px;">
-      <li style="margin-bottom: 12px;"> 300+ children supported with books and school supplies</li>
-      <li style="margin-bottom: 12px;"> 150+ school kits sponsored across multiple districts</li>
-      <li style="margin-bottom: 12px;"> 40+ students provided with digital learning tools</li>
-      <li style="margin-bottom: 12px;"> 75+ volunteers engaged in teaching and mentoring programs</li>
-    </ul>
-  </div>
-</section>
-
-
-
-  <!-- loader -->
+       <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 

@@ -171,7 +171,7 @@ print('''
 </section>
 
       
-      <section class="ftco-section-3 img" style="background-image: url(images/bg_3.jpg);">
+  <section class="ftco-section-3 img" style="background-image: url(images/bg_3.jpg);">
   <div class="overlay"></div>
   <div class="container">
     <div class="row d-md-flex">
@@ -180,18 +180,18 @@ print('''
       </div>
       <div class="col-md-6 volunteer pl-md-5 ftco-animate">
         <h3 class="mb-3">Make a Donation</h3>
-        <form action="#" class="donation-form">
+        <form action="backend/donateamtbackend.py" class="donation-form">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Your Name" required>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" placeholder="Your Email" required>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
           </div>
           <div class="form-group">
-            <input type="number" class="form-control" placeholder="Amount (in rupees)" min="1" required>
+            <input type="int" class="form-control" id="amount" name="amount" placeholder="Amount (in rupees)" min="1" required>
           </div>
           <div class="form-group">
-            <textarea name="" id="" cols="30" rows="3" class="form-control" placeholder="Message (Optional)"></textarea>
+            <input type="text" class="form-control" cols="30" rows="3" id="message" name="message"  placeholder="Message (Optional)">
           </div>
           <div class="form-group">
             <input type="submit" value="Donate Now" class="btn btn-white py-3 px-5">

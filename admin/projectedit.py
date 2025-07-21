@@ -6,10 +6,10 @@ import header
 import mysql.connector
 import os
 
-
 form = cgi.FieldStorage()
 project_id = form.getvalue("project_id")
 
+# DB connection
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -25,13 +25,15 @@ project_title = myresult[1]
 project_description = myresult[2]
 project_status = myresult[3]
 
-folder_name = project_title.replace(" ", "_")
-img1 = f"{folder_name}/{myresult[4]}"
-img2 = f"{folder_name}/{myresult[5]}"
-img3 = f"{folder_name}/{myresult[6]}"
+# ✅ Use project_id as folder name (not project_title)
+folder_name = str(project_id)
+img1 = f"{folder_name}/{myresult[4]}" if myresult[4] else ""
+img2 = f"{folder_name}/{myresult[5]}" if myresult[5] else ""
+img3 = f"{folder_name}/{myresult[6]}" if myresult[6] else ""
 
 switch_active = "active" if project_status == "Active" else ""
 switch_text = "Active" if project_status == "Active" else "Completed"
+
 print(f''' 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,32 +53,33 @@ print(f'''
 
     <form class="form-container" id="projectForm" action="backend/projectupdatebackend.py" method="post" enctype="multipart/form-data">
     
-
       <!-- Image Uploads --> 
       <label>Project Images</label><br><br>
       <div class="image-upload-wrapper">
         <label class="image-box">
           <input type="file" name="image1" accept="image/*" onchange="previewImage(this)">
-          <img src="backend/projectuploads/{img1}" class="preview-img" style="display:block;">
-          <span>Upload</span>
+          <img src="backend/projectuploads/{img1}" class="preview-img" style="display:{'block' if img1 else 'none'};">
+          <span style="display:{'none' if img1 else 'inline'};">Upload</span>
         </label>
         <label class="image-box">
           <input type="file" name="image2" accept="image/*" onchange="previewImage(this)">
-          <img src="backend/projectuploads/{img2}" class="preview-img" style="display:block;">
-          <span>Upload</span>
+          <img src="backend/projectuploads/{img2}" class="preview-img" style="display:{'block' if img2 else 'none'};">
+          <span style="display:{'none' if img2 else 'inline'};">Upload</span>
         </label>
         <label class="image-box">
           <input type="file" name="image3" accept="image/*" onchange="previewImage(this)">
-          <img src="backend/projectuploads/{img3}" class="preview-img" style="display:block;">
-          <span>Upload</span>
+          <img src="backend/projectuploads/{img3}" class="preview-img" style="display:{'block' if img3 else 'none'};">
+          <span style="display:{'none' if img3 else 'inline'};">Upload</span>
         </label>
       </div>
 
-      <!-- Project Title -->
-         <div class="form-group">
-        <label for="title">Project Title</label>
-        <input type="text" id="id"  name="project_id" value="{project_id}" readonly>
+      <!-- Project ID (Hidden) -->
+      <div class="form-group">
+        <label for="title">Project ID</label>
+        <input type="text" name="project_id" value="{project_id}" readonly>
       </div>
+
+      <!-- Project Title -->
       <div class="form-group">
         <label for="title">Project Title</label>
         <input type="text" id="title" name="title" value="{project_title}" required>
@@ -103,6 +106,8 @@ print(f'''
     </form>
   </div>
 ''')
+
+# JavaScript
 print('''
   <script>
     function previewImage(input) {

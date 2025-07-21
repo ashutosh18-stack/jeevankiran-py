@@ -10,6 +10,14 @@ name=form.getvalue("name")
 #print(name)
 email=form.getvalue("email") 
 #print(email)
+project=form.getvalue("project")
+#print(project)
+item=form.getvalue("item")
+#print(item)
+quantity=form.getvalue("quantity")
+#print(quantity)
+amount=form.getvalue("amount")
+#print(amount)
 message=form.getvalue("message")
 #print(message)
 mydb = mysql.connector.connect(
@@ -18,12 +26,12 @@ mydb = mysql.connector.connect(
     password="",  
     database="jeevankiran")
 mycursor = mydb.cursor()
-query =f"""INSERT INTO `volunteer`(`name`, `email`, `message`) VALUES ('{name}','{email}','{message}')"""
+query =f"""INSERT INTO `projectdonor`( `name`, `email`, `project`, `item`, `quantity`, `amount`, `message`) VALUES ('   {name}','{email}','{project}','{item}','{quantity}','{amount}','{message}');"""
 #print(query)
 mycursor.execute(query)
 mydb.commit()
-print(f'''<script>alert("Registered Successfully!");
-    location.href="../compaign.py";
+print(f'''<script>alert("Donated Successfully!");
+    location.href="../project.py";
     </script>''')
 
 
