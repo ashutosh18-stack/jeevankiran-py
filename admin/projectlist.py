@@ -27,27 +27,9 @@ print('''
 <head>
   <meta charset="UTF-8">
   <title>Project List</title>
-  <link rel="stylesheet" href="style/ngomasterlist.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    .project-img-group {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .project-img-group img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 6px;
-      border: 1px solid #ddd;
-    }
-    td.actions a {
-      margin-right: 6px;
-      color: #444;
-      font-size: 16px;
-    }
-  </style>
+   <link rel="stylesheet" href="style/projectlist.css">
+
 </head>
 <body>
   <div class="ngo-list-container">
@@ -86,12 +68,13 @@ for x in results:
             img_html += f'<img src="{img_path}" alt="Image {i}">'
     img_html += '</div>'
 
+    # Print project row
     print(f'''
       <tr>
         <td>{project_id}</td>
         <td>{img_html}</td>
         <td>{title}</td>
-        <td>{desc}</td>
+        <td><div class="desc-cell">{desc}</div></td>
         <td>{status}</td>
         <td class="actions">
           <a href="projectedit.py?project_id={project_id}" class="edit"><i class="fas fa-edit"></i></a>
@@ -99,7 +82,6 @@ for x in results:
         </td> 
       </tr>
     ''')
-
 
 print('''
       </tbody>

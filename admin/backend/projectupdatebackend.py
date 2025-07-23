@@ -10,13 +10,12 @@ print("Content-Type: text/html\n")
 
 form = cgi.FieldStorage()
 
-# Get form values
+
 project_id = form.getvalue("project_id")
 new_title = form.getvalue("title").strip()
 description = form.getvalue("description")
 status = form.getvalue("status")
 
-# Database connection
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -25,7 +24,6 @@ mydb = mysql.connector.connect(
 )
 cursor = mydb.cursor()
 
-# Get old project data
 cursor.execute(f"SELECT * FROM projectmaster WHERE project_id={project_id}")
 old_data = cursor.fetchone()
 
@@ -33,7 +31,6 @@ old_img1 = old_data[4]
 old_img2 = old_data[5]
 old_img3 = old_data[6]
 
-# ✅ Folder name is the project ID (not title)
 folder_name = str(project_id)
 upload_dir = os.path.join("projectuploads", folder_name)
 

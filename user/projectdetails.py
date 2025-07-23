@@ -4,8 +4,9 @@ import cgitb
 cgitb.enable()
 import mysql.connector
 import header
-form =cgi.FieldStorage()
-project_id=form.getvalue('project_id')
+
+form = cgi.FieldStorage()
+project_id = form.getvalue('project_id')
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -13,255 +14,231 @@ mydb = mysql.connector.connect(
     password="",
     database="jeevankiran"
 )
+
 cursor = mydb.cursor(dictionary=True)
 
 # Fetch project details
 cursor.execute(f"SELECT * FROM projectmaster WHERE project_id = '{project_id}'")
 project = cursor.fetchone()
+status = project['status']
 
 project_title = project['project_title']
 id = project['project_id']
-image = project['project_img2'];
-image2 =project['project_img3'];
-image_path= f''' ../admin/backend/projectuploads/{id}/{image}'''
-image_path2= f''' ../admin/backend/projectuploads/{id}/{image2}'''
+image = project['project_img2']
+image2 = project['project_img3']
+image_path = f''' ../admin/backend/projectuploads/{id}/{image}'''
+image_path2 = f''' ../admin/backend/projectuploads/{id}/{image2}'''
+
+# Fetch packages
+mycursor = mydb.cursor(dictionary=True)
+mycursor.execute("SELECT * FROM packagemaster WHERE project_id = %s", (project_id,))
+packages = mycursor.fetchall()
+
+# Start HTML
 print('''
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hero Slider Scrolling</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #1c1c1c;
-      color: white;
-      overflow-x: hidden;
-    }
-
-    .hero-wrap {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .slider {
-      display: flex;
-      width: 200%;
-      height: 100%;
-      animation: slideLeft 20s linear infinite;
-    }
-
-    .slide {
-      flex: 0 0 50%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      filter: brightness(1.0);
-    }
-
-   
-
-    @keyframes slideLeft {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .overlay-text {
-      position: absolute;
-      top: 100px; /* 100px from the top of the hero section */
-      width: 100%;
- background:  rgba(88, 81, 81, 0.458);    color: white;
-      padding: 20px 10px;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
-      z-index: 2;
-      border-bottom: 2px solid orange;
-      text-transform: uppercase;
-    }
-
-    .overlay-text span {
-      color: white;
-    }
-
-    @media screen and (max-width: 768px) {
-      .overlay-text {
-        font-size: 1.2rem;
-        padding: 15px;
-      }
-    }
-
-    
-  </style>
-</head>
-<body>
-''')
-
-     
-
-
-
-print(f'''
-  <div class="hero-wrap">
-    <div class="slider">
-      <div class="slide slide1" style="background-image: url('{image_path}');"></div>
-      <div class="slide slide2" style="background-image: url('{image_path2}');"></div>
-    </div>
-    <div class="overlay-text"><span>{project_title}</span></div>
-  </div>
-
-  
-
-</body>
-</html>
-''')
-print('''
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Charity Project Packages</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Project Details</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-    .project-card {
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: 0.3s;
-      background-color: #fff;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
-    .project-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .status-btn.active {
-      background-color: #87CEFA;
-      color: white;
-    }
-    .status-btn.inactive {
-      background-color: #dc3545;
-      color: white;
-    }
-  </style>
+
+ <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+
+  .hero-wrap {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .overlay-text {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    z-index: 2;
+    border-bottom: 2px solid orange;
+    text-transform: uppercase;
+  }
+
+  .project-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: 0.3s;
+    background-color: #fff;
+    position: relative;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .project-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .package-status-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: orange;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    z-index: 2;
+    text-transform: uppercase;
+  }
+
+  .truncate-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 4.5em;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  .disabled-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  /* Slider Background Fix */
+  .slider {
+    display: flex;
+    width: 200%;
+    height: 100%;
+    animation: slideLeft 20s linear infinite;
+    overflow: hidden;
+  }
+
+  .slide {
+    flex: 0 0 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  @keyframes slideLeft {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+''')
+print(f'''
 </head>
 <body>
 
-''')
+<!-- Hero Section -->
+<div class="hero-wrap" style="background-image: url('images/bg_1.jpg');">
+  <div class="overlay-text"><span>{project_title}</span></div>
+</div>
 
-print(f'''
- 
-
-<section class="ftco-section">
+<!-- Package Cards -->
+<section class="ftco-section py-5">
   <div class="container">
     <div class="row">
-      <!-- Shiksha Daan Donation Items -->
-      <div class="col-md-3 mb-4">
-        <div class="project-card text-center p-3">
-          <img src="images/books.jpg" alt="Books" class="project-img mb-3">
-          <h5>Books</h5>
-          <p>Help children with note books, story books, school books , and more.</p>
-          <button class="btn btn-primary">Donate</button>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="project-card text-center p-3">
-          <img src="images/uniform.jpg" alt="Uniforms" class="project-img mb-3">
-          <h5>Uniforms</h5>
-          <p>Provide neat and clean uniforms for children to attend school with dignity.</p>
-          <button class="btn btn-primary">Donate</button>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="project-card text-center p-3">
-          <img src="images/pens.jpg" alt="Stationery" class="project-img mb-3">
-          <h5>Stationery</h5>
-          <p>Donate pens, pencils, erasers, and other essentials for learning.</p>
-          <button class="btn btn-primary">Donate</button>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="project-card text-center p-3">
-          <img src="images/educational_tools.jpg" alt="Educational Tools" class="project-img mb-3">
-          <h5>Educational Tools</h5>
-          <p>Help with learning aids like charts, models, and drawing kits.</p>
-          <button class="btn btn-primary">Donate</button>
-        </div>
-      </div>
+''')
 
-      <div class="col-md-3 mb-4">
-        <div class="project-card text-center p-3">
-          <img src="images/shoes.jpg" alt="Shoes and Socks" class="project-img mb-3">
-          <h5>Shoes and Socks</h5>
-          <p>Donate school shoes and socks to keep feet warm and protected.</p>
-          <button class="btn btn-primary">Donate</button>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="project-card text-center p-3">
-          <img src="images/schoolbag.jpg" alt="School Bags" class="project-img mb-3">
-          <h5>School Bags</h5>
-          <p>Provide strong and durable bags to carry school essentials.</p>
-          <button class="btn btn-primary">Donate</button>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="project-card text-center p-3">
-          <img src="images/games.jpg" alt="Learning Games" class="project-img mb-3">
-          <h5>Learning Games</h5>
-          <p>Donate educational games that help children learn through play.</p>
-          <button class="btn btn-primary">Donate</button>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="project-card text-center p-3">
-          <img src="images/headphones.jpg" alt="Headphones" class="project-img mb-3">
-          <h5>Headphones</h5>
-          <p>Support students attending online classes with good quality headphones.</p>
-          <button class="btn btn-primary">Donate</button>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="project-card text-center p-3">
-          <img src="images/exam_fees.jpg" alt="Exam Fees" class="project-img mb-3">
-          <h5>Exam Fees</h5>
-          <p>Help cover exam fees for students from financially weak backgrounds.</p>
-          <button class="btn btn-primary">Donate</button>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="project-card text-center p-3">
-          <img src="images/tablet.jpg" alt="Tablets" class="project-img mb-3">
-          <h5>Tablets</h5>
-          <p>Donate used or new tablets to enable digital education for children.</p>
-          <button class="btn btn-primary">Donate</button>
-        </div>
-      </div>
+# Loop through packages
+for pack in packages:
+    package_id = pack['package_id']
+    package_item = pack['package_item']
+    package_description = pack['package_description']
+    package_img = pack['package_img']
+    package_status = pack['package_status']
+    package_qty = pack['package_qty']
+    package_price = pack['package_price']
+    img_path = f"../admin/backend/packageuploads/{package_id}/{package_img}"
 
+    print(f'''
+      <div class="col-md-3 mb-4">
+        <div class="project-card text-center p-3">
+          <div class="package-status-label">{package_status}</div>
+          <img src="{img_path}" alt="Package Image" class="project-img mb-3">
+          <h5>{package_item}</h5>
+          <p class="truncate-description">{package_description}</p>
+          <p><strong>Required Qty:</strong> {package_qty}</p>
+          <p><strong>Required Amount:</strong> Rs:{package_price}</p>
+          <button class="btn btn-primary">Donate</button>
+        </div>
+      </div>
+    ''')
+
+print('''
     </div>
   </div>
 </section>
+''')
 
+# Background slider
+print(f'''
+<div class="hero-wrap">
+  <div class="slider" style="display: flex; width: 200%; height: 100vh; animation: slideLeft 20s linear infinite;">
+    <div class="slide" style="flex: 0 0 50%; background-image: url('{image_path}'); background-size: cover;"></div>
+    <div class="slide" style="flex: 0 0 50%; background-image: url('{image_path2}'); background-size: cover;"></div>
+  </div>
+  <div class="overlay-text"><span>{project_title}</span></div>
+</div>
+''')
+
+# Overlay if project is completed
+if status.lower() == 'completed':
+    print('''
+    <div class="disabled-overlay" id="disabledOverlay">
+      This project is completed. You cannot interact with this page.
+    </div>
+    <script>
+      document.body.style.pointerEvents = 'none';
+      document.getElementById('disabledOverlay').style.pointerEvents = 'auto';
+    </script>
+    ''')
+
+# Scripts and closing HTML
+print('''
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
 ''')
+
 import footer

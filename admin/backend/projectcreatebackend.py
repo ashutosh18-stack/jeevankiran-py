@@ -20,6 +20,7 @@ mydb = mysql.connector.connect(
 )
 mycursor = mydb.cursor()
 
+# Insert project
 insert_sql = """
     INSERT INTO projectmaster (project_title, project_description, status)
     VALUES (%s, %s, %s)
@@ -28,37 +29,34 @@ mycursor.execute(insert_sql, (title, description, status))
 mydb.commit()
 project_id = mycursor.lastrowid
 
+# Create folder
 base_dir = "projectuploads"
 project_folder_path = os.path.join(base_dir, str(project_id))
-
 if not os.path.exists(project_folder_path):
     os.makedirs(project_folder_path)
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-image_fields = ["image1"]
-=======
-# Step 4: Save images in that folder using project_title in filenames
->>>>>>> 7f5bd1761b2c98f78cf827eb4e7ee74b32ee8462
+# Save images
 image_fields = ["image1", "image2", "image3"]
->>>>>>> 06ee7a814b40a8e37a1fddfb3314324160e5bc2d
 saved_image_names = []
 
 for index, field_name in enumerate(image_fields, start=1):
-    file_item = form[field_name]
-    if file_item.filename:
-        ext = os.path.splitext(file_item.filename)[1]
-        image_name = f"{title.replace(' ', '_')}_{index}{ext}"
-        image_path = os.path.join(project_folder_path, image_name)
+    if field_name in form:
+        file_item = form[field_name]
+        if file_item.filename:
+            ext = os.path.splitext(file_item.filename)[1]
+            image_name = f"{title.replace(' ', '_')}_{index}{ext}"
+            image_path = os.path.join(project_folder_path, image_name)
 
-        with open(image_path, 'wb') as f:
-            f.write(file_item.file.read())
+            with open(image_path, 'wb') as f:
+                f.write(file_item.file.read())
 
-        saved_image_names.append(image_name)
+            saved_image_names.append(image_name)
+        else:
+            saved_image_names.append("")
     else:
         saved_image_names.append("")
 
+# Update with image names
 update_sql = """
     UPDATE projectmaster
     SET project_img1 = %s, project_img2 = %s, project_img3 = %s
@@ -73,3 +71,10 @@ print('''
     location.href="../projectlist.py";
 </script>
 ''')
+
+
+
+
+
+
+  

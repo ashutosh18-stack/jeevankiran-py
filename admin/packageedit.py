@@ -52,6 +52,10 @@ img = f"{folder_name}/{package_img}" if package_img else ""
 
 switch_active = "active" if package_status == "Active" else ""
 switch_text = "Active" if package_status == "Active" else "Completed"
+cursor=mydb.cursor(dictionary=True)
+project_query=(f""" SELECT * FROM projectmaster WHERE status='Active'""")
+cursor.execute(project_query)
+project=cursor.fetchall()
 
 print(f""" 
 <!DOCTYPE html>
@@ -86,6 +90,14 @@ print(f"""
         <label for="project">Select Active Project</label>
         <select name="project" id="project" required>
           <option value="{project_id}">{project_name}</option>
+ """)
+for proj in project:
+    project_id1 = proj['project_id']
+    project_name1= proj['project_title']
+print(f"""     
+            <option value="{project_id1}" >{project_name1}</option>
+            """)
+print(f"""
         </select>
       </div>
 

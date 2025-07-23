@@ -4,8 +4,10 @@ import cgitb
 import header
 import mysql.connector
 import os
+import sys
 
 cgitb.enable()
+sys.stdout.reconfigure(encoding='utf-8')  # Fix UnicodeEncodeError
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -27,7 +29,6 @@ SELECT
     packagemaster.package_img
 FROM packagemaster
 JOIN projectmaster ON packagemaster.project_id = projectmaster.project_id;
-
 """
 mycursor.execute(query)
 results = mycursor.fetchall()
@@ -40,25 +41,7 @@ print('''
   <title>Package List</title>
   <link rel="stylesheet" href="style/ngomasterlist.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    .project-img-group {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .project-img-group img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 6px;
-      border: 1px solid #ddd;
-    }
-    td.actions a {
-      margin-right: 6px;
-      color: #444;
-      font-size: 16px;
-    }
-  </style>
+
 </head>
 <body>
   <div class="ngo-list-container">
@@ -106,7 +89,7 @@ for x in results:
         <td>{title}</td>
         <td>{qty}</td>
         <td>{price}</td>
-        <td>{desc}</td>
+        <td class="desc-cell">{desc}</td>
         <td>{status}</td>
         <td class="actions">
           <a href="packageedit.py?package_id={package_id}" class="edit"><i class="fas fa-edit"></i></a>

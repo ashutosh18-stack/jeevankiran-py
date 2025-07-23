@@ -1,3 +1,9 @@
+body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f7;
+      margin: 0;
+      padding: 0;
+    }
 
     .ngo-list-container {
       max-width: 1300px;
@@ -7,6 +13,7 @@
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(41, 128, 185, 0.1);
     }
+
     .ngo-list-container h2 {
       margin-bottom: 25px;
       color: #2980b9;
@@ -15,16 +22,19 @@
       align-items: center;
       gap: 10px;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
       background-color: white;
       font-size: 0.95rem;
     }
+
     thead {
       background-color: #2980b9;
       color: white;
     }
+
     th, td {
       padding: 12px 15px;
       border-bottom: 1px solid #ddd;
@@ -33,17 +43,30 @@
       word-wrap: break-word;
       white-space: normal;
     }
+
+    .desc-cell {
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.6;
+      padding: 10px;
+      background: #fdfefe;
+      border-radius: 6px;
+      border: 1px solid #ecf0f1;
+    }
+
     td img {
       width: 50px;
       height: 50px;
       object-fit: cover;
       border-radius: 8px;
     }
+
     .project-img-group {
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
     }
+
     .project-img-group img {
       width: 60px;
       height: 60px;
@@ -51,53 +74,57 @@
       border-radius: 6px;
       border: 1px solid #ddd;
     }
+
     .actions a {
       text-decoration: none;
       font-size: 1.1rem;
       margin-right: 8px;
     }
+
     .actions .edit {
       color: #27ae60;
     }
+
     .actions .edit:hover {
       color: #1e8449;
     }
+
     .actions .delete {
       color: #c0392b;
     }
+
     .actions .delete:hover {
       color: #922b21;
-    }
-    .desc-cell {
-      max-width: 300px;
-      white-space: pre-wrap;
-      word-break: break-word;
-      line-height: 1.5;
     }
 
     @media (max-width: 768px) {
       table, thead, tbody, th, td, tr {
         display: block;
       }
+
       thead {
         display: none;
       }
+
       tr {
         margin-bottom: 20px;
         border-bottom: 2px solid #ccc;
         padding-bottom: 10px;
       }
+
       td {
         display: flex;
         justify-content: space-between;
         padding: 8px 0;
       }
+
       td::before {
         content: attr(data-label);
         font-weight: bold;
         color: #555;
         flex: 1;
       }
+
       td img {
         width: 40px;
         height: 40px;
