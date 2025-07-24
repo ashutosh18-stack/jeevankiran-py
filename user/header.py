@@ -2,8 +2,10 @@
 import cgi
 import cgitb
 cgitb.enable()
+form = cgi.FieldStorage()
+id = form.getvalue("id")
 print("Content-Type: text/html\n")
-print('''
+print(f'''
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -15,12 +17,12 @@ print('''
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="index.py" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="about.py" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="project.py" class="nav-link">Project</a></li>
-          <li class="nav-item"><a href="donate.py" class="nav-link">Donate</a></li>
-          <li class="nav-item"><a href="compaign.py" class="nav-link">Compaigns</a></li>
-          <li class="nav-item"><a href="contact.py" class="nav-link">Contact</a></li>
+          <li class="nav-item"><a href="index.py?id={id}" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.py?id={id}" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="project.py?id={id}" class="nav-link">Project</a></li>
+          <li class="nav-item"><a href="donate.py?id={id}" class="nav-link">Donate</a></li>
+          <li class="nav-item"><a href="compaign.py?id={id}" class="nav-link">Compaigns</a></li>
+          <li class="nav-item"><a href="contact.py?id={id}" class="nav-link">Contact</a></li>
           <li class="nav-item dropdown">
          <button class="btn btn-primary dropdown-toggle"
         style="background-color:#fd7e14; border-radius: 50px; width: 150px; height: 40px; padding: 0;"

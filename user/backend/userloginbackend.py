@@ -39,7 +39,7 @@ if mycursor.rowcount == 1:
         localStorage.setItem("id", '{id}');
         localStorage.setItem("fullname", '{fullname}');
         alert("Welcome User-{fullname}!");
-        location.href = "../index.py";
+        location.href = "../index.py?id={id}";
     </script>''')
 
 else:

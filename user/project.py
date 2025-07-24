@@ -4,6 +4,8 @@ import cgitb
 cgitb.enable()
 import header
 import mysql.connector
+form = cgi.FieldStorage()
+user_id = form.getvalue("id")
 mydb = mysql.connector.connect(
     host = "localhost",
     user ="root",
@@ -91,12 +93,12 @@ for x in results:
     print(f'''
     <div class="col-md-4 ftco-animate">
         <div class="cause-entry">
-            <a href="projectdetails.py?project_id={id}" class="img" style="background-image: url('{image_url}');"></a>
+            <a href="projectdetails.py?id={user_id}&project_id={id}" class="img" style="background-image: url('{image_url}');"></a>
             <div class="text p-3 p-md-4">
-                <h3><a href="projectdetails.py?project_id={id}">{title}</a></h3>
+                <h3><a href="projectdetails.py?id={user_id}&project_id={id}">{title}</a></h3>
                 <p>{desc}</p>
                 <span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                <p><a href="projectdetails.py?project_id={id}">Donate <i class="ion-ios-arrow-forward"></i></a></p>
+                <p><a href="projectdetails.py?id={user_id}&project_id={id}">Donate <i class="ion-ios-arrow-forward"></i></a></p>
                <div class="progress custom-progress-success">
                   <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>

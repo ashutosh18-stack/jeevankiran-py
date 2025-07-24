@@ -8,6 +8,6 @@ print('''
  localStorage.clear();
  
  alert("logout Successfully!");
-    location.href="login.py";
+    location.href="userlogin.py";
 </script>
 ''')

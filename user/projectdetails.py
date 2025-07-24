@@ -8,6 +8,7 @@ import header
 form = cgi.FieldStorage()
 project_id = form.getvalue('project_id')
 
+user_id = form.getvalue("id")
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -191,18 +192,20 @@ for pack in packages:
     img_path = f"../admin/backend/packageuploads/{package_id}/{package_img}"
 
     print(f'''
-      <div class="col-md-3 mb-4">
-        <div class="project-card text-center p-3">
-          <div class="package-status-label">{package_status}</div>
-          <img src="{img_path}" alt="Package Image" class="project-img mb-3">
-          <h5>{package_item}</h5>
-          <p class="truncate-description">{package_description}</p>
-          <p><strong>Required Qty:</strong> {package_qty}</p>
-          <p><strong>Required Amount:</strong> Rs:{package_price}</p>
-          <button class="btn btn-primary">Donate</button>
-        </div>
+    <div class="col-md-3 mb-4">
+     <a href="projectdonor.py?id={user_id}&package_id={package_id}" style="text-decoration: none; color: inherit;">
+      <div class="project-card text-center p-3">
+        <div class="package-status-label">{package_status}</div>
+        <img src="{img_path}" alt="Package Image" class="project-img mb-3">
+        <h5>{package_item}</h5>
+        <p class="truncate-description">{package_description}</p>
+        <p><strong>Required Qty:</strong> {package_qty}</p>
+        <p><strong>Required Amount:</strong> Rs:{package_price}</p>
+        <span class="btn btn-primary">Donate</span>
       </div>
-    ''')
+     </a>
+    </div>
+''')
 
 print('''
     </div>

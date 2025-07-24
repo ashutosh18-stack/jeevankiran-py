@@ -3,6 +3,36 @@ import cgi
 import cgitb
 cgitb.enable()
 import header
+import cgi
+import cgitb
+cgitb.enable()
+import mysql.connector
+import header
+
+form = cgi.FieldStorage()
+package_id = form.getvalue('package_id')
+user_id = form.getvalue("id")
+# Fetch package details
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="",
+    database="jeevankiran"
+)
+cursor = mydb.cursor(dictionary=True)
+cursor.execute("SELECT * FROM packagemaster WHERE package_id = %s", (package_id,))
+package = cursor.fetchone()
+
+item = package['package_item']
+project_id = package['project_id'] 
+total_price = int(package['package_price'])
+required_qty = int(package['package_qty'])
+unit_price = total_price // required_qty  
+
+cursor.execute("SELECT project_title FROM projectmaster WHERE project_id = %s", (project_id,))
+project_data = cursor.fetchone()
+project_name = project_data['project_title']
+
 print('''
 <!DOCTYPE html>
 <html lang="en">
@@ -58,32 +88,39 @@ print('''
       </div>
       <div class="col-md-6 volunteer pl-md-5 ftco-animate">
         <h3 class="mb-3">Make a Donation</h3>
-        <form action="backend/projectdonorbackend.py" method="post" class="donation-form">
-          <div class="form-group">
-            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
-          </div>
-          <div class="form-group">
-            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="project" name="project" placeholder="Project Selected" required>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="item" name="item" placeholder="Item Selected" required>
-          </div>
-          <div class="form-group">
-            <input type="int" class="form-control" id="quantity" name="quantity" placeholder="Quantity" min="1" required>
-          </div>
-          <div class="form-group">
-            <input type="int" class="form-control" id="amount" name="amount" placeholder="Amount (in rupees)" min="1" required>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control"  cols="30" rows="3" id="message" name="message"  placeholder="Message (Optional)">
-          </div>
-          <div class="form-group">
-            <input type="submit" value="Donate Now" class="btn btn-white py-3 px-5">
-          </div>
-        </form>
+      ''')
+print(f'''
+<form action="backend/projectdonorbackend.py" method="post" class="donation-form" onsubmit="return validateForm()">
+        <input type="hidden" name="userid" value="{user_id}">
+  <input type="hidden" name="package_id" value="{package_id}">
+  <div class="form-group">
+    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+  </div>
+  <div class="form-group">
+    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" name="project" value="{project_name}" readonly>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" name="item" value="{item}" readonly>
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" id="quantity" name="quantity" min="1" placeholder="Max {required_qty} available" oninput="calculateAmount()" required>
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" id="amount" name="amount" value="{unit_price}" readonly>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" name="message" placeholder="Message (Optional)">
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Donate Now" class="btn btn-white py-3 px-5">
+  </div>
+</form>
+''')
+
+print(f'''
       </div>
     </div>
   </div>
@@ -94,6 +131,29 @@ print('''
 
  <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+<script>
+  const unitPrice = {unit_price};
+  const maxQty = {required_qty};
+      ''')
+print('''
+ function calculateAmount() {
+    const qty = parseInt(document.getElementById("quantity").value) || 0;
+    if (qty < 1 || qty > maxQty) {
+      document.getElementById("amount").value = 0;
+    } else {
+      document.getElementById("amount").value = qty * unitPrice;
+    }
+  }
+
+  function validateForm() {
+    const qty = parseInt(document.getElementById("quantity").value);
+    if (!qty || qty < 1 || qty > maxQty) {
+      alert("Please enter a valid quantity between 1 and " + maxQty);
+      return false;
+    }
+    return true;
+  }
+</script>
 
 
   <script src="js/jquery.min.js"></script>

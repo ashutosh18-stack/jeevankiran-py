@@ -5,6 +5,7 @@ import header
 import mysql.connector
 import os
 cgitb.enable()
+
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -12,9 +13,11 @@ mydb = mysql.connector.connect(
     database="jeevankiran"
 )
 mycursor = mydb.cursor(dictionary=True)
-query = "SELECT * FROM projectdonor"
+query = "SELECT * FROM package_donations"
 mycursor.execute(query)
 results = mycursor.fetchall()
+
+# HTML Output
 print('''
 <!DOCTYPE html>
 <html lang="en">
@@ -24,11 +27,46 @@ print('''
   <link rel="stylesheet" href="style/ngomasterlist.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    .ngo-list-container {
+      max-width: 1300px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 10px;
+      border-bottom: 1px solid #ddd;
+      vertical-align: top;
+      word-wrap: break-word;
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+
+    th {
+      background-color: #2980b9;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    td.message {
+      max-width: 300px;
+    }
+
     .project-img-group {
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
     }
+
     .project-img-group img {
       width: 60px;
       height: 60px;
@@ -36,6 +74,7 @@ print('''
       border-radius: 6px;
       border: 1px solid #ddd;
     }
+
     td.actions a {
       margin-right: 6px;
       color: #444;
@@ -50,9 +89,10 @@ print('''
       <thead>
         <tr>
           <th>ID</th> 
+      <th>USER ID</th> 
           <th>NAME</th>
           <th>EMAIL</th>
-          <th>PROJECT</th>
+        
           <th>ITEM</th>
           <th>QUANTITY</th>
           <th>AMOUNT</th>
@@ -62,28 +102,27 @@ print('''
       <tbody>
 ''')
 
+# Loop through data
 for x in results:
-    id = x['id']
-    name = x['name']
-    email = x['email']
-    project = x['project']
-    item = x['item']
+    packageid = x['id']
+    userid =x['user_id']
+    name = x['user_name']
+    email = x['user_email']
+    package = x['package_item']
     quantity = x['quantity']
     amount = x['amount']
     message = x['message']
-    
 
     print(f'''
       <tr>
-        <td>{id}</td>
+        <td>{packageid}</td>
+         <td>{userid}</td>
         <td>{name}</td>
         <td>{email}</td>
-        <td>{project}</td>
-        <td>{item}</td>
+        <td>{package}</td>
         <td>{quantity}</td>
         <td>{amount}</td>
-        <td>{message}</td>
-        
+        <td class="message">{message}</td>
       </tr>
     ''')
 
