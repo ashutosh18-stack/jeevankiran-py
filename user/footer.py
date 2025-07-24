@@ -52,7 +52,8 @@ print('''
               <ul class="list-unstyled">
                 <li><a href="index.py" class="py-2 d-block">Home</a></li>
                 <li><a href="about.py" class="py-2 d-block">About</a></li>
-                <li><a href="doante.py" class="py-2 d-block">Donate</a></li>
+                <li><a href="project.py" class="py-2 d-block">Project</a></li>
+                <li><a href="donate.py" class="py-2 d-block">Donate</a></li>
                 <li><a href="compaign.py" class="py-2 d-block">Compaigns</a></li>
                 <li><a href="contact.py" class="py-2 d-block">Contact</a></li>
               </ul>

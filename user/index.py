@@ -139,11 +139,7 @@ print('''
 		    					<div class="text p-3 p-md-4">
 		    						<h3><a href="#">Education for Underprivileged Children</a></h3>
 		    						<p>“Your donation gives a child the gift of learning, hope, and a brighter future.”</p>
-		    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">$12,000 raised of $30,000</span>
+		    						
 		    					</div>
 		    				</div>
 	    				</div>
@@ -153,11 +149,7 @@ print('''
 		    					<div class="text p-3 p-md-4">
 		    						<h3><a href="#">Healthcare for the Poor</a></h3>
 		    						<p>“Support life-saving treatments and medical aid for those who can’t afford it.”</p>
-		    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">$12,000 raised of $30,000</span>
+		    						
 		    					</div>
 		    				</div>
 	    				</div>
@@ -167,11 +159,7 @@ print('''
 		    					<div class="text p-3 p-md-4">
 		    						<h3><a href="#">Women Empowerment</a></h3>
 		    						<p>“Help women gain skills, confidence, and independence through your support.”</p>
-		    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">$12,000 raised of $30,000</span>
+		    						
 		    					</div>
 		    				</div>
 	    				</div>
@@ -181,11 +169,7 @@ print('''
 		    					<div class="text p-3 p-md-4">
 		    						<h3><a href="#">Food and Nutrition</a></h3>
 		    						<p>“A small contribution from you can feed a hungry child or family.”</p>
-		    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">$12,000 raised of $30,000</span>
+		    						
 		    					</div>
 		    				</div>
 	    				</div>
@@ -195,11 +179,7 @@ print('''
 		    					<div class="text p-3 p-md-4">
 		    						<h3><a href="#">Shelter for the Homeless</a></h3>
 		    						<p>“Your donation gives safety, warmth, and dignity to those without a roof.”</p>
-		    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">$12,000 raised of $30,000</span>
+		    						
 		    					</div>
 		    				</div>
 	    				</div>
@@ -209,11 +189,7 @@ print('''
 		    					<div class="text p-3 p-md-4">
 		    						<h3><a href="#">Environment & Sustainability</a></h3>
 		    						<p>“Protect the planet — support tree plantations, clean water, and eco-initiatives.”</p>
-		    						<span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-		                <div class="progress custom-progress-success">
-		                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-		                </div>
-		                <span class="fund-raised d-block">$12,000 raised of $30,000</span>
+		    					
 		    					</div>
 		    				</div>
 	    				</div>
@@ -457,13 +433,13 @@ print('''
     			<h3 class="mb-3">Be a volunteer</h3>
     			<form action="backend/volunteerbackend.py" class="volunter-form">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Name">
+              <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Email">
+              <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
             </div>
             <div class="form-group">
-              <textarea name="" id="" cols="30" rows="3" class="form-control" placeholder="Message"></textarea>
+              <input type="text"  cols="30" rows="3" class="form-control" id="message" name="message" placeholder="Message">
             </div>
             <div class="form-group">
               <input type="submit" value="Send Message" class="btn btn-white py-3 px-5">

@@ -32,7 +32,7 @@ try:
 
     # Use parameterized query to prevent SQL injection
     update_query = """
-    UPDATE signup SET fullname=%s, email=%s, phonenumber=%s, DateofBirth=%s, password=%s WHERE id=%s
+    UPDATE usersignup SET fullname=%s, email=%s, phonenumber=%s, DateofBirth=%s, password=%s WHERE id=%s
     """
     values = (fullname, email, phonenumber, DateofBirth, password, id)
     cursor.execute(update_query, values)
@@ -40,17 +40,18 @@ try:
     
 
     if cursor.rowcount == 1:
-        print(f'''<script>
+           print(f'''<script>
         alert("Profile Edited Successful!");
         localStorage.clear();
-        location.href = "login.py";
+        location.href = "userlogin.py";
     </script>''')
         
     else:
-        print(f'''<script>
+       print(f'''<script>
         alert("Profile Edit Unsuccessful!");
         location.href = "index.py";
     </script>''')
+       
 
 except mysql.connector.Error as err:
     print(f"<h3 style='color:red;'>Database error: {err}</h3>")

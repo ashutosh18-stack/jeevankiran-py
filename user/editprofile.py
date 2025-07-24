@@ -22,7 +22,7 @@ try:
         database="jeevankiran"
     )
     cursor = mydb.cursor()
-    cursor.execute("SELECT * FROM signup WHERE id = %s", (user_id,))
+    cursor.execute("SELECT * FROM usersignup WHERE id = %s", (user_id,))
     user = cursor.fetchone()
 
     if not user:
@@ -45,35 +45,40 @@ print(f"""
   <h2 class="text-center mb-4">Edit Profile</h2>
   <form action="updatedprofile.py" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="id" value="{user[0]}">
+    
+    <div class="mb-3">
+      <label class="form-label">Image</label>
+      <input type="img" class="form-control" name="img" value="{user[1]}" required>
+    </div>
 
     <div class="mb-3">
       <label class="form-label">Full Name</label>
-      <input type="text" class="form-control" name="fullname" value="{user[1]}" required>
+      <input type="text" class="form-control" name="fullname" value="{user[2]}" required>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Email</label>
-      <input type="email" class="form-control" name="email" value="{user[2]}" required>
+      <input type="email" class="form-control" name="email" value="{user[3]}" required>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Phone Number</label>
-      <input type="tel" class="form-control" name="phonenumber" value="{user[3]}" required>
+      <input type="tel" class="form-control" name="phonenumber" value="{user[4]}" required>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Date of Birth</label>
-      <input type="date" class="form-control" name="DateofBirth" value="{user[4]}" required>
+      <input type="date" class="form-control" name="DateofBirth" value="{user[5]}" required>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Password</label>
-      <input type="password" class="form-control" name="password" value="{user[5]}" required>
+      <input type="password" class="form-control" name="password" value="{user[6]}" required>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Confirm Password</label>
-      <input type="password" class="form-control" name="confirm_password" value="{user[5]}" required>
+      <input type="password" class="form-control" name="confirm_password" value="{user[6]}" required>
     </div>
 
     <div class="d-grid">

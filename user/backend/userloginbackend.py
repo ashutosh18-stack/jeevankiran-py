@@ -18,13 +18,13 @@ mydb = mysql.connector.connect(
     database="jeevankiran"
 )
 mycursor = mydb.cursor()
-query = f"""SELECT * FROM `signup` WHERE `phonenumber`='{phonenumber}' AND `password`='{password}'"""
+query = f"""SELECT * FROM `usersignup` WHERE `phonenumber`='{phonenumber}' AND `password`='{password}'"""
 mycursor.execute(query)
 myresult = mycursor.fetchone()
 
 if mycursor.rowcount == 1:
     id = myresult[0]
-    fullname = myresult[1]
+    fullname = myresult[2]
 
     cookie = http.cookies.SimpleCookie()
     cookie["id"] = str(id)  # set user id from DB
@@ -39,12 +39,12 @@ if mycursor.rowcount == 1:
         localStorage.setItem("id", '{id}');
         localStorage.setItem("fullname", '{fullname}');
         alert("Welcome User-{fullname}!");
-        location.href = "index.py";
+        location.href = "../index.py";
     </script>''')
 
 else:
     print("Content-Type: text/html\n")
     print(f'''<script>
         alert("Login Unsuccessful!");
-        location.href = "../login.py";
+        location.href = "../userlogin.py";
     </script>''')

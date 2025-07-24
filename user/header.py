@@ -37,13 +37,13 @@ print('''
 <script>
       var fullname=localStorage.getItem("fullname");
       if(fullname=="" || fullname==null){
-      document.write('<a href="signup.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Register</a>')
+      document.write('<a href="usersignup.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Register</a>')
        
-   document.write('<a href="login.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Login</a>')
+   document.write('<a href="userlogin.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Login</a>')
       }else{
          document.write('<a href="" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3" style="margin-right: 20px;">'+ fullname +'</a>')
        
-        document.write('<a href="logout.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Logout</a>')
+        document.write('<a href="userlogout.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Logout</a>')
       }
 </script>
 ''')
