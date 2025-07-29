@@ -32,7 +32,8 @@ print(f'''
         <li><a href="projectmaster.py?admin_id={admin_id}"><i class="fas fa-project-diagram"></i><span>Project Master</span></a></li>
         <li><a href="packagemaster.py?admin_id={admin_id}"><i class="fas fa-box"></i><span>Package Master</span></a></li>
         <li><a href="donormaster.py?admin_id={admin_id}"><i class="fas fa-hand-holding-heart"></i><span>Donation Master</span></a></li>
-        <li><a href="#"><i class="fas fa-bullhorn"></i><span>Special Campaigns</span></a></li>
+        <li><a href="campaignmaster.py"><i class="fas fa-bullhorn"></i><span>Special Campaigns</span></a></li>
+        <li><a href="eventmaster.py"><i class="fas fa-bullhorn"></i><span>Campaign Event Details</span></a></li>
         <li><a href="volunteermaster.py?admin_id={admin_id}"><i class="fa-solid fa-hands-holding-child"></i><span>Volunteer</span></a></li>
         <li><a href="feedbackmaster.py?admin_id={admin_id}"><i class="fa-solid fa-comments"></i><span>Feedback</span></a></li>
         <li><a href="#"><i class="fas fa-user-friends"></i><span>Donors</span></a></li>

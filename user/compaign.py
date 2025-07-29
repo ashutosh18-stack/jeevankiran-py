@@ -3,6 +3,19 @@ import cgi
 import cgitb
 cgitb.enable()
 import header
+import mysql.connector
+form = cgi.FieldStorage()
+user_id = form.getvalue("id")
+mydb = mysql.connector.connect(
+    host = "localhost",
+    user ="root",
+    password = "",
+    database = "jeevankiran"
+)
+mycursor = mydb.cursor(dictionary=True)
+query=f''' SELECT * FROM campaignmaster'''
+mycursor.execute(query)
+results = mycursor.fetchall()
 print('''
 <!DOCTYPE html>
 <html lang="en">
@@ -32,17 +45,30 @@ print('''
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+      
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+      .status-btn.active {
+      background-color: #87CEFA;
+      color: white;
+    }
+    .status-btn.inactive {
+      background-color: #dc3545;
+      color: white;
+
+      </style>
+
   </head>
   <body>
-    
     
     <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-             <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Event</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Compaigns</h1>
+             <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>campaigns</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Campaigns</h1>
           </div>
         </div>
       </div>
@@ -51,109 +77,39 @@ print('''
     
     <section class="ftco-section">
       <div class="container">
-        <div class="row">
-        	<div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/event-1.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-              	<div class="meta mb-3">
-                  <div><a href="#">Sep. 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+      	<div class="row">
+''')
+for x in results:
+    id = x['id']
+    title = x['title']
+    desc = x['description']
+    status = x['status']
+    image = x['img1']
+    
+
+    image_url = f"../admin/backend/campaignuploads/{id}/{image}"
+    status_class = "active" if status.lower() == "active" else "completed"
+
+    print(f'''
+    <div class="col-md-4 ftco-animate">
+        <div class="cause-entry">
+            <a href="campaigndetails.py?id={user_id}id={id}" class="img" style="background-image: url('{image_url}');"></a>
+            <div class="text p-3 p-md-4">
+                <h3><a href="campaigndetails.py?id={user_id}&id={id}">{title}</a></h3>
+                <p>{desc}</p>
+                <span class="donation-time mb-3 d-block">Last donation 1w ago</span>
+                <p><a href="campaigndetails.py?id={user_id}&id={id}">Donate <i class="ion-ios-arrow-forward"></i></a></p>
+               <div class="progress custom-progress-success">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <h3 class="heading mb-4"><a href="#">Jeevankiran Ray of Hope</a></h3>
-                <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                <p>Purpose: General fundraising for education, health, or emergency relief.</p>
-                <p><a href="event1.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-              </div>
+                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
+               <br> <button class="btn status-btn {status_class}">{status}</button>
             </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/event-2.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-              	<div class="meta mb-3">
-                  <div><a href="#">Sep. 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mb-4"><a href="#">Jeevankiran Shiksha Daan</a></h3>
-                <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                <p>Purpose: Sponsor education for underprivileged children.</p>
-                <p><a href="event2.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/event-3.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-              	<div class="meta mb-3">
-                  <div><a href="#">Sep. 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mb-4"><a href="#">Jeevankiran Bhojan Seva</a></h3>
-                <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                <p>Purpose: Distribute food packets to needy families or street children.</p>
-                <p><a href="event3.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/event-4.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-              	<div class="meta mb-3">
-                  <div><a href="#">Sep. 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mb-4"><a href="#">Jeevankiran Nari Shakti </a></h3>
-                <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                <p>Purpose: Support skill training, hygiene, and self-help programs for women.</p>
-                <p><a href="event4.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/event-5.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-              	<div class="meta mb-3">
-                  <div><a href="#">Sep. 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mb-4"><a href="#">Jeevankiran Harit Bharat</a></h3>
-                <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                <p>Purpose: Tree plantations, clean-ups, and eco-awareness drives.</p>
-                <p><a href="event5.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/event-6.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-              	<div class="meta mb-3">
-                  <div><a href="#">Sep. 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mb-4"><a href="#">Jeevankiran Jeevan Daan</a></h3>
-                <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                <p>Purpose: Provide free medical checkups, blood donations, or support surgeries.</p>
-                <p><a href="event6.py">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-              </div>
-            </div>
-          </div>
+        </div>
+    </div>
+    ''')
+
+print('''
         </div>
         <div class="row mt-5">
           <div class="col text-center">
@@ -172,37 +128,9 @@ print('''
         </div>
       </div>
     </section>
-    
-      
-       <section class="ftco-section-3 img" style="background-image: url(images/bg_3.jpg);">
-    	<div class="overlay"></div>
-    	<div class="container">
-    		<div class="row d-md-flex">
-    		<div class="col-md-6 d-flex ftco-animate">
-    			<div class="img img-2 align-self-stretch" style="background-image: url(images/bg_4.jpg);"></div>
-    		</div>
-    		<div class="col-md-6 volunteer pl-md-5 ftco-animate">
-    			<h3 class="mb-3">Be a volunteer</h3>
-    			<form action="backend/volunteerbackend.py" class="volunter-form">
-            <div class="form-group">
-              <input type="text" class="form-control" id="name"  name="name" placeholder="Your Name">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="email"  name="email" placeholder="Your Email">
-            </div>
-            <div class="form-group">
-              <input type="text" cols="30" rows="3" id="message"  name="message" class="form-control" placeholder="Message"></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Send Message" class="btn btn-white py-3 px-5">
-            </div>
-          </form>
-    		</div>    			
-    		</div>
-    	</div>
-    </section>   
 
-      
+    
+  
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
