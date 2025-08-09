@@ -39,7 +39,6 @@ mycursor.execute(query)
 result = mycursor.fetchone()
 
 project_id = result['project_id']
-project_name = result['project_name']
 package_item = result['package_item']
 package_qty = result['package_qty']
 package_price = result['package_price']
@@ -52,10 +51,12 @@ img = f"{folder_name}/{package_img}" if package_img else ""
 
 switch_active = "active" if package_status == "Active" else ""
 switch_text = "Active" if package_status == "Active" else "Completed"
-cursor=mydb.cursor(dictionary=True)
-project_query=(f""" SELECT * FROM projectmaster WHERE status='Active'""")
+
+# Fetch all active projects
+cursor = mydb.cursor(dictionary=True)
+project_query = """SELECT * FROM projectmaster WHERE status='Active'"""
 cursor.execute(project_query)
-project=cursor.fetchall()
+project_list = cursor.fetchall()
 
 print(f""" 
 <!DOCTYPE html>
@@ -89,14 +90,13 @@ print(f"""
       <div class="form-group">
         <label for="project">Select Active Project</label>
         <select name="project" id="project" required>
-          <option value="{project_id}">{project_name}</option>
- """)
-for proj in project:
-    project_id1 = proj['project_id']
-    project_name1= proj['project_title']
-print(f"""     
-            <option value="{project_id1}" >{project_name1}</option>
-            """)
+""")
+
+# Print all projects, selecting the current one
+for proj in project_list:
+    selected_attr = "selected" if proj['project_id'] == project_id else ""
+    print(f"""<option value="{proj['project_id']}" {selected_attr}>{proj['project_title']}</option>""")
+
 print(f"""
         </select>
       </div>
@@ -147,6 +147,7 @@ print(f"""
     </form>
   </div>
 """)
+
 print("""
   <script>
     function previewImage(input) {

@@ -44,4 +44,4 @@ mydb.commit()
 
 
 print(f'''<script>alert("Project Deleted successfully");
-      location.href="../projectlist/py"</script> ''')
+      location.href="../projectlist.py"</script> ''')
