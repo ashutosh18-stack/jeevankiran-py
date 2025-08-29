@@ -1,247 +1,157 @@
-#!C:\Python312\python.exe
+#!C:/Python312/python.exe
 import cgi
-import cgitb
-cgitb.enable()
 import mysql.connector
-import header
+import cgitb
+import header  
+cgitb.enable()
 
 form = cgi.FieldStorage()
-project_id = form.getvalue('project_id')
+event_id = form.getvalue("event_id")
 
-user_id = form.getvalue("id")
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="jeevankiran"
-)
 
-cursor = mydb.cursor(dictionary=True)
-
-# Fetch project details
-cursor.execute(f"SELECT * FROM projectmaster WHERE project_id = '{project_id}'")
-project = cursor.fetchone()
-status = project['status']
-
-project_title = project['project_title']
-id = project['project_id']
-image = project['project_img2']
-image2 = project['project_img3']
-image_path = f''' ../admin/backend/projectuploads/{id}/{image}'''
-image_path2 = f''' ../admin/backend/projectuploads/{id}/{image2}'''
-
-# Fetch packages
-mycursor = mydb.cursor(dictionary=True)
-mycursor.execute("SELECT * FROM packagemaster WHERE project_id = %s", (project_id,))
-packages = mycursor.fetchall()
-
-# Start HTML
 print('''
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Project Details</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
+    <title>Welfare - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
 
- <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
 
-  html, body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-  }
+    <link rel="stylesheet" href="css/aos.css">
 
-  .hero-wrap {
-    position: relative;
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-  }
+    <link rel="stylesheet" href="css/ionicons.min.css">
 
-  .overlay-text {
-    position: absolute;
-    top: 100px;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 20px 10px;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    z-index: 2;
-    border-bottom: 2px solid orange;
-    text-transform: uppercase;
-  }
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-  .project-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: 0.3s;
-    background-color: #fff;
-    position: relative;
-  }
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+      
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  .project-card:hover {
-    transform: translateY(-5px);
-  }
+    <style>
+      .status-btn.active {
+      background-color: #87CEFA;
+      color: white;
+    }
+    .status-btn.inactive {
+      background-color: #dc3545;
+      color: white;
 
-  .project-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
+      </style>
 
-  .package-status-label {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: orange;
-    padding: 5px 10px;
-    font-size: 12px;
-    font-weight: bold;
-    color: white;
-    border-radius: 5px;
-    z-index: 2;
-    text-transform: uppercase;
-  }
-
-  .truncate-description {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-height: 4.5em;
-    white-space: normal;
-    word-wrap: break-word;
-  }
-
-  .disabled-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-  }
-
-  /* Slider Background Fix */
-  .slider {
-    display: flex;
-    width: 200%;
-    height: 100%;
-    animation: slideLeft 20s linear infinite;
-    overflow: hidden;
-  }
-
-  .slide {
-    flex: 0 0 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  @keyframes slideLeft {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); }
-  }
-</style>
-''')
-print(f'''
-</head>
-<body>
-
-<!-- Hero Section -->
-<div class="hero-wrap" style="background-image: url('images/bg_1.jpg');">
-  <div class="overlay-text"><span>{project_title}</span></div>
-</div>
-
-<!-- Package Cards -->
-<section class="ftco-section py-5">
-  <div class="container">
-    <div class="row">
-''')
-
-# Loop through packages
-for pack in packages:
-    package_id = pack['package_id']
-    package_item = pack['package_item']
-    package_description = pack['package_description']
-    package_img = pack['package_img']
-    package_status = pack['package_status']
-    package_qty = pack['package_qty']
-    package_price = pack['package_price']
-    img_path = f"../admin/backend/packageuploads/{package_id}/{package_img}"
-
-    print(f'''
-    <div class="col-md-3 mb-4">
-     <a href="projectdonor.py?id={user_id}&package_id={package_id}" style="text-decoration: none; color: inherit;">
-      <div class="project-card text-center p-3">
-        <div class="package-status-label">{package_status}</div>
-        <img src="{img_path}" alt="Package Image" class="project-img mb-3">
-        <h5>{package_item}</h5>
-        <p class="truncate-description">{package_description}</p>
-        <p><strong>Required Qty:</strong> {package_qty}</p>
-        <p><strong>Required Amount:</strong> Rs:{package_price}</p>
-        <span class="btn btn-primary">Donate</span>
+  </head>
+  <body>
+    
+    <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+             <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>campaigns</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Campaign detail</h1>
+          </div>
+        </div>
       </div>
-     </a>
     </div>
+
+    
+    <section class="ftco-section">
+      <div class="container">
+      	<div class="row">
 ''')
+
+if event_id:
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="",
+        database="jeevankiran"
+    )
+    mycursor = mydb.cursor(dictionary=True)
+    
+    query = """
+        SELECT e.id AS event_id, e.title AS event_title, e.description, e.objectives,
+       e.yourhelp, e.contribution, e.impact, e.img,
+       c.title AS campaign_title
+FROM eventmaster e
+JOIN campaignmaster c ON e.id = c.id
+WHERE e.id = %s
+
+    """
+    mycursor.execute(query, (event_id,))
+    ev = mycursor.fetchone()
+
+    if ev:
+        img_path = ev['img'] if ev['img'] else "default.jpg"
+        print(f"""
+        <div class="container text-center">
+          <div class="image-box" style="background-image:url('eventuploads/{img_path}');"></div>
+          <div class="details-box">
+            <h2>{ev['event_title']}</h2>
+            <h2><b>Campaign:</b><br> {ev['campaign_title']}</h2>
+            <h2><b>Description:</b><br> {ev['description']}</h2>
+            <h2><b> Our Objectives:</b><br> {ev['objectives']}</h2>
+            <h2><b>How you can help:</b><br> {ev['yourhelp']}</h2>
+            <h2><b>Contribution impact:</b><br> {ev['contribution']}</h2>
+            <h2><b>Impact so far:</b><br> {ev['impact']}</h2>
+
+            <a href="donate.py?event_id={ev['event_id']}" class="btn btn-success">Donate Now</a>
+          </div>
+        </div>
+        """)
+    else:
+        print("<h3 style='color:red; text-align:center;'>Campaign not found!</h3>")
+else:
+    print("<h3 style='color:red; text-align:center;'>Invalid request!</h3>")
+
+print("</body></html>")
+
 
 print('''
-    </div>
-  </div>
-</section>
-''')
+        </div>
+       
+      </div>
+    </section>
 
-# Background slider
-print(f'''
-<div class="hero-wrap">
-  <div class="slider" style="display: flex; width: 200%; height: 100vh; animation: slideLeft 20s linear infinite;">
-    <div class="slide" style="flex: 0 0 50%; background-image: url('{image_path}'); background-size: cover;"></div>
-    <div class="slide" style="flex: 0 0 50%; background-image: url('{image_path2}'); background-size: cover;"></div>
-  </div>
-  <div class="overlay-text"><span>{project_title}</span></div>
-</div>
-''')
+    
+  
 
-# Overlay if project is completed
-if status.lower() == 'completed':
-    print('''
-    <div class="disabled-overlay" id="disabledOverlay">
-      This project is completed. You cannot interact with this page.
-    </div>
-    <script>
-      document.body.style.pointerEvents = 'none';
-      document.getElementById('disabledOverlay').style.pointerEvents = 'auto';
-    </script>
-    ''')
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-# Scripts and closing HTML
-print('''
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-</body>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
 </html>
 ''')
-
 import footer

@@ -45,6 +45,8 @@ print('''
       }else{
          document.write('<a href="" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3" style="margin-right: 20px;">'+ fullname +'</a>')
        
+        document.write('<a href="receipt.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Receipt</a>')
+      
         document.write('<a href="userlogout.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Logout</a>')
       }
 </script>

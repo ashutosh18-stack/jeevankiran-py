@@ -93,16 +93,15 @@ for x in results:
     print(f'''
     <div class="col-md-4 ftco-animate">
         <div class="cause-entry">
-            <a href="campaigndetails.py?id={user_id}id={id}" class="img" style="background-image: url('{image_url}');"></a>
+            <a href="campaigndetails.py?event_id={id}id={id}" class="img" style="background-image: url('{image_url}');"></a>
             <div class="text p-3 p-md-4">
-                <h3><a href="campaigndetails.py?id={user_id}&id={id}">{title}</a></h3>
-                <p>{desc}</p>
-                <span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                <p><a href="campaigndetails.py?id={user_id}&id={id}">Donate <i class="ion-ios-arrow-forward"></i></a></p>
+                <a href="campaigndetails.py?event_id={id}" class="img" ...></a>
+<h3><a href="campaigndetails.py?event_id={id}">{title}</a></h3>
+<p><a href="campaigndetails.py?event_id={id}">VIEW DETAILS <i class="ion-ios-arrow-forward"></i></a></p>
                <div class="progress custom-progress-success">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <span class="fund-raised d-block"><i class="fa fa-inr" aria-hidden="true"></i>12,000 raised of <i class="fa fa-inr" aria-hidden="true"></i>30,000</span>
+                <span class="fund-raised d-block">Volunteer for our campaign </span>
                <br> <button class="btn status-btn {status_class}">{status}</button>
             </div>
         </div>

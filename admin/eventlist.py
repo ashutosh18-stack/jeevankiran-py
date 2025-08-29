@@ -19,16 +19,18 @@ mycursor = mydb.cursor(dictionary=True)
 
 query = """
 SELECT 
-    eventmaster.id AS id,
-    campaignmaster.title AS title,
-    eventmaster.event_description,
-    eventmaster.event_objectives,
-    eventmaster.event_yourhelp,
-    eventmaster.event_contribution,
-    eventmaster.event_impact,
-    eventmaster.event_img
+  eventmaster.id AS id,
+  campaignmaster.title AS title,
+  eventmaster.description AS description,
+  eventmaster.objectives AS objectives,
+  eventmaster.yourhelp AS yourhelp,
+  eventmaster.img AS img,
+  eventmaster.contribution AS contribution,
+  eventmaster.impact AS impact,
+  campaignmaster.id AS id
 FROM eventmaster
 JOIN campaignmaster ON eventmaster.id = campaignmaster.id;
+
 """
 mycursor.execute(query)
 results = mycursor.fetchall()
@@ -49,7 +51,7 @@ print('''
     <table>
       <thead>
         <tr>
-           
+          <th>ID</th> 
           <th>Image</th>
           <th>Event Title</th>
           <th>Objectives</th>
@@ -71,7 +73,7 @@ for x in results:
     yourhelp = x['yourhelp']
     contribution = x['contribution']
     impact = x['impact']
-    img = x['event_img']
+    img = x['img']
 
     folder = str(id)
 

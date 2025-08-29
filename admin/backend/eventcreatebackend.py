@@ -28,10 +28,10 @@ query=f''' SELECT id FROM campaignmaster where title="{title}"'''
 
 mycursor.execute(query)
 data= mycursor.fetchone()
-id# print(id)
+#print(id)
 insert_query=f''' INSERT INTO eventmaster(id ,title,description,objectives,yourhelp,img,contribution,impact) 
 VALUES('{id}','{title}','{event_description}','{event_objectives}','{event_yourhelp}','{uploadFileName}','{event_contribution}','{event_impact}') '''
-# print(insert_query)
+#print(insert_query)
 mycursor.execute(insert_query)
 mydb.commit()
 id=mycursor.lastrowid
@@ -41,4 +41,4 @@ file_path = os.path.join(upload_dir,uploadFileName)
 open(file_path, 'wb').write(fi.file.read())
 print(f''' 
 <script>alert("Event added succesfully!")
-      location.href="../event.py"</script>''')
+      location.href="../eventlist.py"</script>''')
