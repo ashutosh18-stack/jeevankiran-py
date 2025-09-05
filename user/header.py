@@ -3,7 +3,7 @@ import cgi
 import cgitb
 cgitb.enable()
 form = cgi.FieldStorage()
-id = form.getvalue("id")
+sid = form.getvalue("id")
 print("Content-Type: text/html\n")
 print(f'''
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -17,12 +17,12 @@ print(f'''
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="index.py?id={id}" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="about.py?id={id}" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="project.py?id={id}" class="nav-link">Project</a></li>
-          <li class="nav-item"><a href="donate.py?id={id}" class="nav-link">Donate</a></li>
-          <li class="nav-item"><a href="compaign.py?id={id}" class="nav-link">Compaigns</a></li>
-          <li class="nav-item"><a href="contact.py?id={id}" class="nav-link">Contact</a></li>
+          <li class="nav-item"><a href="index.py?id={sid}" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.py?id={sid}" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="project.py?id={sid}" class="nav-link">Project</a></li>
+          <li class="nav-item"><a href="donate.py?id={sid}" class="nav-link">Donate</a></li>
+          <li class="nav-item"><a href="compaign.py?id={sid}" class="nav-link">Compaigns</a></li>
+          <li class="nav-item"><a href="contact.py?id={sid}" class="nav-link">Contact</a></li>
           <li class="nav-item dropdown">
          <button class="btn btn-primary dropdown-toggle"
         style="background-color:#fd7e14; border-radius: 50px; width: 150px; height: 40px; padding: 0;"
@@ -44,11 +44,13 @@ print('''
    document.write('<a href="userlogin.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Login</a>')
       }else{
          document.write('<a href="" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3" style="margin-right: 20px;">'+ fullname +'</a>')
-       
-        document.write('<a href="receipt.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Receipt</a>')
+      ''')
+print(f'''
+        document.write('<a href="receipt_table.py?sid={sid}" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Receipt</a>')
       
         document.write('<a href="userlogout.py" style="display: block; background-color:#fd7e14;" class="btn btn-primary rounded-pill py-2 px-3">Logout</a>')
-      }
+      ''')
+print('''}
 </script>
 ''')
 print('''

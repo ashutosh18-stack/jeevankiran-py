@@ -7,7 +7,7 @@ import cgi
 import cgitb
 cgitb.enable()
 import mysql.connector
-import header
+
 
 form = cgi.FieldStorage()
 package_id = form.getvalue('package_id')
@@ -90,7 +90,7 @@ print('''
         <h3 class="mb-3">Make a Donation</h3>
       ''')
 print(f'''
-<form action="backend/projectdonorbackend.py" method="post" class="donation-form" onsubmit="return validateForm()">
+<form action="backend/projectdonorbackend.py" method="post" class="donation-form" >
         <input type="hidden" name="userid" value="{user_id}">
   <input type="hidden" name="package_id" value="{package_id}">
   <div class="form-group">

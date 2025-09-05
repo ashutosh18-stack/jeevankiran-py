@@ -3,14 +3,15 @@ import cgi
 import cgitb
 import mysql.connector
 import http.cookies
+import os
 
 cgitb.enable()
 
 form = cgi.FieldStorage()
-fullname = form.getvalue("fullname")
 phonenumber = form.getvalue("phonenumber") 
 password = form.getvalue("password")
 
+# --- Database connection ---
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -18,17 +19,27 @@ mydb = mysql.connector.connect(
     database="jeevankiran"
 )
 mycursor = mydb.cursor()
-query = f"""SELECT * FROM `usersignup` WHERE `phonenumber`='{phonenumber}' AND `password`='{password}'"""
-mycursor.execute(query)
+query = "SELECT * FROM `usersignup` WHERE `phonenumber`=%s AND `password`=%s"
+mycursor.execute(query, (phonenumber, password))
 myresult = mycursor.fetchone()
 
-if mycursor.rowcount == 1:
-    id = myresult[0]
+if myresult:
+    user_id = myresult[0]
     fullname = myresult[2]
 
+    # --- Create session file ---
+    sessions_folder = os.path.join(os.path.dirname(__file__), "../sessions")
+    if not os.path.exists(sessions_folder):
+        os.makedirs(sessions_folder)
+
+    session_file = os.path.join(sessions_folder, f"{user_id}.txt")
+    with open(session_file, "w") as f:
+        f.write(str(user_id))
+
+    # --- Set cookie ---
     cookie = http.cookies.SimpleCookie()
-    cookie["id"] = str(id)  # set user id from DB
-    cookie["id"]["path"] = "/"  # cookie valid for whole site
+    cookie["id"] = str(user_id)
+    cookie["id"]["path"] = "/"  # valid for whole site
 
     print("Content-Type: text/html")
     print(cookie.output())  # set-cookie header
@@ -36,10 +47,10 @@ if mycursor.rowcount == 1:
 
     print(f'''<script>
         localStorage.clear();
-        localStorage.setItem("id", '{id}');
+        localStorage.setItem("id", '{user_id}');
         localStorage.setItem("fullname", '{fullname}');
         alert("Welcome User-{fullname}!");
-        location.href = "../index.py?id={id}";
+        location.href = "../index.py?id={user_id}";
     </script>''')
 
 else:
