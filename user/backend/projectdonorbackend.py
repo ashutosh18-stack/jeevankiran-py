@@ -36,6 +36,7 @@ sql = """INSERT INTO package_payment
 (user_id, user_name, user_email, package_id, package_item, quantity, amount, message, payment_status)
 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, 'pending')"""
 
+
 values = (user_id, user_name, user_email, package_id, package_item, quantity, amount, message)
 cursor.execute(sql, values)
 mydb.commit()

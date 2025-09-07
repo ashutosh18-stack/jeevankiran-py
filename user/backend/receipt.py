@@ -71,7 +71,7 @@ print(f"""
         </table>
         <div class="actions">
             <a href="receipt_pdf.py?donation_id={donation['donated_id']}" class="btn">Download PDF</a>
-            <a href="../index.py" class="btn btn-index">Back to Home</a>
+            <a href="../index.py?id={donation['user_id']}" class="btn btn-index">Back to Home</a>
         
         </div>
     </div>

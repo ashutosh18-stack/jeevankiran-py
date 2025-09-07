@@ -13,7 +13,7 @@ mydb = mysql.connector.connect(
     database="jeevankiran"
 )
 mycursor = mydb.cursor(dictionary=True)
-query = "SELECT * FROM package_donations"
+query = "SELECT * FROM package_payment"
 mycursor.execute(query)
 results = mycursor.fetchall()
 
@@ -43,7 +43,7 @@ print('''
 
     th, td {
       text-align: left;
-      padding: 12px 10px;
+      padding: 12px 9px;
       border-bottom: 1px solid #ddd;
       vertical-align: top;
       word-wrap: break-word;
@@ -58,12 +58,12 @@ print('''
     }
 
     td.message {
-      max-width: 300px;
+      max-width: 250px;
     }
 
     .project-img-group {
       display: flex;
-      gap: 6px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
@@ -78,13 +78,13 @@ print('''
     td.actions a {
       margin-right: 6px;
       color: #444;
-      font-size: 16px;
+      font-size: 10px;
     }
   </style>
 </head>
 <body>
   <div class="ngo-list-container">
-    <h2><i class="fas fa-list"></i> Donor List</h2>
+    <h2><i class="fas fa-list"></i>Project Donated List</h2>
     <table>
       <thead>
         <tr>
@@ -96,6 +96,8 @@ print('''
           <th>ITEM</th>
           <th>QUANTITY</th>
           <th>AMOUNT</th>
+      <th>PAY STATUS</th>
+      <th>TRANSACTION</th>
           <th>MESSAGE</th>
         </tr>
       </thead>
@@ -104,13 +106,15 @@ print('''
 
 # Loop through data
 for x in results:
-    packageid = x['id']
+    packageid = x['donated_id']
     userid =x['user_id']
     name = x['user_name']
     email = x['user_email']
     package = x['package_item']
     quantity = x['quantity']
     amount = x['amount']
+    payment=x['payment_status']
+    transaction=x['transaction_id']
     message = x['message']
 
     print(f'''
@@ -122,6 +126,8 @@ for x in results:
         <td>{package}</td>
         <td>{quantity}</td>
         <td>{amount}</td>
+           <td>{payment}</td>
+              <td>{transaction}</td>
         <td class="message">{message}</td>
       </tr>
     ''')

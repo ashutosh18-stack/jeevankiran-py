@@ -64,15 +64,15 @@ payment_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 if verified:
     cursor.execute("""
         UPDATE package_payment 
-        SET payment_status=%s, message=%s, payment_date=%s, transaction_id=%s, razorpay_order_id=%s
+        SET payment_status=%s, payment_date=%s, transaction_id=%s, razorpay_order_id=%s
         WHERE donated_id=%s
-    """, ("success", razorpay_payment_id, payment_time, razorpay_payment_id, razorpay_order_id, donated_id))
+    """, ("success",  payment_time, razorpay_payment_id, razorpay_order_id, donated_id))
     if cursor.rowcount == 0:
         cursor.execute("""
             UPDATE package_payment 
-            SET payment_status=%s, message=%s, payment_date=%s, transaction_id=%s, razorpay_order_id=%s
+            SET payment_status=%s, payment_date=%s, transaction_id=%s, razorpay_order_id=%s
             WHERE id=%s
-        """, ("success", razorpay_payment_id, payment_time, razorpay_payment_id, razorpay_order_id, donated_id))
+        """, ("success", payment_time, razorpay_payment_id, razorpay_order_id, donated_id))
     db.commit()
 
     # Redirect to receipt page

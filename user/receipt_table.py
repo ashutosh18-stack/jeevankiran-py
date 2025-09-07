@@ -76,7 +76,7 @@ h2 { text-align:center; margin-top:0; padding-top:0; }
 """)
 
 # Back arrow link (top-left)
-print(f"<a href='index.py?sid={sid}' class='top-back'>&larr; </a>")
+print(f"<a href='index.py?id={sid}' class='top-back'>&larr; </a>")
 
 # Page content
 print("<div class='content'>")  # content below fixed header

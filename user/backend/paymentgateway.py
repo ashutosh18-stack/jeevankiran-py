@@ -57,9 +57,9 @@ order = client.order.create({"amount": amount_paise, "currency": "INR", "payment
 razor_order_id = order["id"]
 
 # Save order id in DB
-cursor.execute("UPDATE package_payment SET message=%s WHERE donated_id=%s", (razor_order_id, donated_id))
+cursor.execute("UPDATE package_payment SET 	razorpay_order_id=%s WHERE donated_id=%s", (razor_order_id, donated_id))
 if cursor.rowcount == 0:
-    cursor.execute("UPDATE package_payment SET message=%s WHERE id=%s", (razor_order_id, donated_id))
+    cursor.execute("UPDATE package_payment SET 	razorpay_order_id=%s WHERE id=%s", (razor_order_id, donated_id))
 db.commit()
 
 # Escape values
