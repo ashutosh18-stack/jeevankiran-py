@@ -1,0 +1,45 @@
+#!C:\Python312\python.exe
+import cgi
+import cgitb
+cgitb.enable()
+import header
+
+print('''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NGO Master Menu</title>
+  <link rel="stylesheet" href="style/projectmaster.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1><i class="fas fa-hands-helping"></i> Donor Master Panel</h1>
+    
+    <div class="card-wrapper">
+      <!-- Add NGO -->
+      <div class="card" onclick="goTo('projectdonorlist.py')">
+        <i class="fas fa-list icon""></i>
+        <h2>Donors List </h2>
+        <p>Who Donated For Projects</p>
+      </div>
+
+      <!-- NGO List -->
+      <div class="card" onclick="goTo('donorlist.py')">
+        <i class="fas fa-list icon"></i>
+        <h2>General Donor List</h2>
+        <p>View Donor Details from the system</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function goTo(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+</html>
+''')
