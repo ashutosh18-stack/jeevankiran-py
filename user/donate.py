@@ -3,6 +3,17 @@ import cgi
 import cgitb
 cgitb.enable()
 import header
+import mysql.connector
+
+form = cgi.FieldStorage()
+user_id = form.getvalue("id")
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="",
+    database="jeevankiran"
+)
+cursor = mydb.cursor(dictionary=True)
 print('''
 <!DOCTYPE html>
 <html lang="en">
@@ -180,7 +191,12 @@ print('''
       </div>
       <div class="col-md-6 volunteer pl-md-5 ftco-animate">
         <h3 class="mb-3">Make a Donation</h3>
-        <form action="backend/donateamtbackend.py" class="donation-form">
+
+
+<form action="backend/donateamtbackend.py" method="post" class="donation-form">
+ ''')
+print(f'''
+ <input type="hidden" name="userid" value="{user_id}">
           <div class="form-group">
             <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
           </div>
@@ -188,10 +204,10 @@ print('''
             <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
           </div>
           <div class="form-group">
-            <input type="int" class="form-control" id="amount" name="amount" placeholder="Amount (in rupees)" min="1" required>
+<input type="number" class="form-control" name="amount" placeholder="Amount (in rupees)" min="1" required>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" cols="30" rows="3" id="message" name="message"  placeholder="Message (Optional)">
+<textarea class="form-control" name="message" placeholder="Message (Optional)"></textarea>
           </div>
           <div class="form-group">
             <input type="submit" value="Donate Now" class="btn btn-white py-3 px-5">
@@ -202,8 +218,6 @@ print('''
   </div>
 </section>
 
-      
-      
 
  <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
@@ -229,5 +243,5 @@ print('''
     
   </body>
 </html>
-''')
-import footer
+
+import footer''')
