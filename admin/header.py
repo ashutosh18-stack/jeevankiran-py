@@ -36,9 +36,8 @@ print(f'''
         <li><a href="eventmaster.py"><i class="fas fa-bullhorn"></i><span>Campaign Event Details</span></a></li>
         <li><a href="volunteermaster.py?admin_id={admin_id}"><i class="fa-solid fa-hands-holding-child"></i><span>Volunteer</span></a></li>
         <li><a href="feedbackmaster.py?admin_id={admin_id}"><i class="fa-solid fa-comments"></i><span>Feedback</span></a></li>
-        <li><a href="#"><i class="fas fa-user-friends"></i><span>Donors</span></a></li>
-        <li><a href="#"><i class="fas fa-receipt"></i><span>Receipts</span></a></li>
-        <li><a href="#"><i class="fas fa-birthday-cake"></i><span>Birthdays</span></a></li>
+        <li><a href="userdetails.py?admin_id={admin_id}"><i class="fas fa-user-friends"></i><span>Donors</span></a></li>
+        <li><a href="birthday.py"><i class="fas fa-birthday-cake"></i><span>Birthdays</span></a></li>
       </ul>
     </nav>
   </aside>

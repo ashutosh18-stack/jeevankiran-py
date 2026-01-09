@@ -46,7 +46,6 @@ cursor = db.cursor()
 
 client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
 
-# Verify signature
 verified = False
 try:
     client.utility.verify_payment_signature({

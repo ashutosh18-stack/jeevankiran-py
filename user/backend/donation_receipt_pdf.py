@@ -2,14 +2,13 @@
 import cgi, cgitb
 cgitb.enable()
 import mysql.connector
-import sys, io
+import sys, io, os
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import mm
 from datetime import datetime
 
-# Get donation_id from query string
 form = cgi.FieldStorage()
 donation_id = form.getvalue("donation_id")
 
@@ -19,7 +18,6 @@ if not donation_id:
     sys.exit()
 
 try:
-    # Connect to DB
     db = mysql.connector.connect(
         host="localhost",
         user="root",
@@ -28,7 +26,6 @@ try:
     )
     cursor = db.cursor(dictionary=True)
 
-    # Fetch donation details
     cursor.execute("""
         SELECT donation_id, name, email, amount,
                razorpay_order_id, razorpay_payment_id,
@@ -43,7 +40,6 @@ try:
         print("<h2 style='color:red;text-align:center;'>Donation Not Found or Payment Pending!</h2>")
         sys.exit()
 
-    # Build PDF in memory
     buffer = io.BytesIO()
     c = canvas.Canvas(buffer, pagesize=A4)
     width, height = A4
@@ -51,90 +47,98 @@ try:
     top = height - 20 * mm
     line_height = 8 * mm
 
-    # Header
     c.setFont("Helvetica-Bold", 18)
     c.setFillColor(colors.darkgreen)
-    c.drawCentredString(width / 2, top, "The Leafy Spot")
+    c.drawCentredString(width / 2, top, "JeevanKiran NGO")
     c.setFont("Helvetica", 12)
     c.setFillColor(colors.black)
     c.drawCentredString(width / 2, top - 6 * mm, "Donation Receipt")
 
-    # Divider line
     c.setLineWidth(1)
     c.line(left, top - 8 * mm, width - left, top - 8 * mm)
 
-    # Metadata
     y = top - 18 * mm
+
     c.setFont("Helvetica-Bold", 10)
     c.drawString(left, y, "Receipt No.:")
     c.setFont("Helvetica", 10)
-    c.drawString(left + 35 * mm, y, str(donation.get("donation_id", "")))
+    c.drawString(left + 35 * mm, y, str(donation["donation_id"]))
 
     y -= line_height
     c.setFont("Helvetica-Bold", 10)
     c.drawString(left, y, "Date:")
     c.setFont("Helvetica", 10)
     pd = donation.get("payment_date")
-    if isinstance(pd, datetime):
-        pd_str = pd.strftime("%Y-%m-%d %H:%M:%S")
-    else:
-        pd_str = str(pd) if pd else ""
+    pd_str = pd.strftime("%d-%m-%Y %I:%M %p") if isinstance(pd, datetime) else str(pd)
     c.drawString(left + 35 * mm, y, pd_str)
 
-    # Donor Info
     y -= 12 * mm
     c.setFont("Helvetica-Bold", 10)
     c.drawString(left, y, "Donor Name:")
     c.setFont("Helvetica", 10)
-    c.drawString(left + 35 * mm, y, donation.get("name", ""))
+    c.drawString(left + 35 * mm, y, donation["name"])
 
     y -= line_height
     c.setFont("Helvetica-Bold", 10)
     c.drawString(left, y, "Email:")
     c.setFont("Helvetica", 10)
-    c.drawString(left + 35 * mm, y, donation.get("email", ""))
+    c.drawString(left + 35 * mm, y, donation["email"])
 
-    # Donation Details Table
     y -= 12 * mm
     c.setFont("Helvetica-Bold", 10)
     c.drawString(left, y, "Amount (INR):")
     c.setFont("Helvetica", 10)
-    c.drawString(left + 35 * mm, y, str(donation.get("amount", "")))
+    c.drawString(left + 35 * mm, y, str(donation["amount"]))
 
     y -= line_height
     c.setFont("Helvetica-Bold", 10)
-    c.drawString(left, y, "Razorpay Order ID: ")
+    c.drawString(left, y, "Razorpay Order ID:")
     c.setFont("Helvetica", 10)
-    c.drawString(left + 35 * mm, y, donation.get("razorpay_order_id", ""))
+    c.drawString(left + 40 * mm, y, donation["razorpay_order_id"])
 
     y -= line_height
     c.setFont("Helvetica-Bold", 10)
-    c.drawString(left, y, "Razorpay Payment ID: ")
+    c.drawString(left, y, "Razorpay Payment ID:")
     c.setFont("Helvetica", 10)
-    c.drawString(left + 40 * mm, y, donation.get("razorpay_payment_id", ""))
+    c.drawString(left + 45 * mm, y, donation["razorpay_payment_id"])
 
-    # Footer note
     y -= 20 * mm
     c.setFont("Helvetica-Oblique", 9)
     c.drawString(left, y, "This is a computer-generated receipt. No signature required.")
-    y -= 8 * mm
-    c.drawString(left, y, "Thank you for your contribution to The Leafy Spot.")
 
-    # Organization contact
-    y -= 12 * mm
+    y -= 8 * mm
+    c.drawString(left, y, "Thank you for supporting JeevanKiran")
+
+    y -= 10 * mm
     c.setFont("Helvetica", 8)
-    c.drawString(left, y, "The Leafy Spot | Address | City | Phone: +91-XXXXXXXXXX")
+    c.drawString(left, y, "JeevanKiran | Address | Contact: +91-XXXXXXXXXX")
 
     c.showPage()
     c.save()
     buffer.seek(0)
+
     pdf_data = buffer.read()
 
-    # Stream PDF to browser
+    receipts_folder = os.path.join(os.getcwd(), "donation_receipts")
+    if not os.path.exists(receipts_folder):
+        os.makedirs(receipts_folder)
+
+    filename = f"donation_{donation_id}.pdf"
+    file_path = os.path.join("donation_receipts", filename)  # relative path saved to DB
+    absolute_path = os.path.join(os.getcwd(), file_path)     # actual save location
+
+    with open(absolute_path, "wb") as f:
+        f.write(pdf_data)
+
+    # === SAVE PDF PATH TO DATABASE ===
+    cursor.execute("""
+        UPDATE donate_payment SET receipt_path=%s WHERE donation_id=%s
+    """, (file_path, donation_id))
+    db.commit()
+
     out = sys.stdout.buffer
-    filename = f"receipt_{donation['donation_id']}.pdf"
     out.write(b"Content-Type: application/pdf\r\n")
-    out.write(f"Content-Disposition: attachment; filename=\"{filename}\"\r\n\r\n".encode("utf-8"))
+    out.write(f"Content-Disposition: attachment; filename=\"{filename}\"\r\n\r\n".encode())
     out.write(pdf_data)
     out.flush()
 
