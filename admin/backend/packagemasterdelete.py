@@ -19,19 +19,23 @@ mydb = mysql.connector.connect(
 )
 mycursor = mydb.cursor()
 
-folder_path = f"packageuploads/{package_id}"
+# folder_path = f"packageuploads/{package_id}"
 
-if os.path.exists(folder_path):
-    for root, dirs, files in os.walk(folder_path, topdown=False):
-        for file in files:
-            os.remove(os.path.join(root, file))
-        for dir in dirs:
-            os.rmdir(os.path.join(root, dir))
-    os.rmdir(folder_path)
+# if os.path.exists(folder_path):
+#     for root, dirs, files in os.walk(folder_path, topdown=False):
+#         for file in files:
+#             os.remove(os.path.join(root, file))
+#         for dir in dirs:
+#             os.rmdir(os.path.join(root, dir))
+#     os.rmdir(folder_path)
 
-delete_package_query = f"DELETE FROM packagemaster WHERE package_id ={package_id}"
+delete_package_query = f"DELETE FROM packagemaster WHERE package_id={package_id}"
+delete_package_payment_query=f"DELETE FROM package_payment WHERE package_id={package_id}"
 # print(delete_package_query)
+mycursor.execute(delete_package_payment_query)
 mycursor.execute(delete_package_query)
+
+
 mydb.commit()
 
 

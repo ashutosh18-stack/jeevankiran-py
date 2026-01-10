@@ -52,7 +52,7 @@ print('''
       <button type="submit" class="btn btn-primary btn-block">Login</button>
     </div>
   </form>
-  <p class="text-center mt-3">Don't have an account? <a href="signup.py">Sign up here</a></p>
+  <p class="text-center mt-3">Don't have an account? <a href="usersignup.py">Sign up here</a></p>
 </div>
 
 <script src="js/jquery.min.js"></script>
