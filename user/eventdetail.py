@@ -117,9 +117,9 @@ for row in result:
 
     print(f'''
         <div class="event-card">
-            <img src="uploads/{image}" alt="{campaign}">
+         
             <div class="content">
-                <h3>{campaign}</h3>
+                <h3>{title}</h3>
                 <p><b>Description:</b> {description}</p>
                 <p><b>Objectives:</b> {objectives}</p>
                 <p><b>How You Can Help:</b> {yourhelp}</p>
