@@ -29,6 +29,7 @@ mycursor = mydb.cursor()
 #             os.rmdir(os.path.join(root, dir))
 #     os.rmdir(folder_path)
 
+delete_package_query = f"DELETE FROM packagemaster WHERE package_id={package_id};"
 delete_package_query = f"DELETE FROM packagemaster WHERE package_id={package_id}"
 delete_package_payment_query=f"DELETE FROM package_payment WHERE package_id={package_id}"
 # print(delete_package_query)
