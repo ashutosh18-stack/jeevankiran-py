@@ -21,17 +21,7 @@ mydb = mysql.connector.connect(
 )
 mycursor = mydb.cursor()
 
-# Folder path
-folder_path = f"projectuploads/{project_id}"
 
-# Step 1: Recursively delete folder and contents
-if os.path.exists(folder_path):
-    for root, dirs, files in os.walk(folder_path, topdown=False):
-        for file in files:
-            os.remove(os.path.join(root, file))
-        for dir in dirs:
-            os.rmdir(os.path.join(root, dir))
-    os.rmdir(folder_path)
 
 # Safe and clean method
 delete_package_query = "DELETE FROM packagemaster WHERE project_id = %s"
