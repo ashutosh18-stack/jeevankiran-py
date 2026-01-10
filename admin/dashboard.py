@@ -1,101 +1,150 @@
-#!C:\Python312\python.exe
-import cgi
-import cgitb
+#!C:/Python312/python.exe
+import mysql.connector
+import cgi, cgitb
+from datetime import datetime, timedelta
 cgitb.enable()
 import header
 
-# Dummy data (replace with database values)
-total_projects = 12
-total_donors = 58
-total_donations = 453250
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="",
+    database="jeevankiran"
+)
+cursor = db.cursor(dictionary=True)
 
-recent_donations = [
-    {"name": "Ravi Kumar", "project": "Food Drive", "amount": 2000},
-    {"name": "Anita Shah", "project": "School Kit", "amount": 1500},
-    {"name": "Rahul Mehta", "project": "Medical Camp", "amount": 3000}
-]
+# ===================== FETCH DONATION TOTALS =====================
 
-special_campaigns = [
-    {"title": "Winter Blanket Drive", "status": "Active"},
-    {"title": "Child Health Camp", "status": "Completed"}
-]
+def fetch_total(query):
+    cursor.execute(query)
+    result = cursor.fetchone()
+    return result['total'] if result['total'] else 0
 
-donor_birthdays = [
-    {"name": "Neha Joshi", "phone": "9876543210", "email": "neha@example.com"},
-    {"name": "Arjun Reddy", "phone": "9876540000", "email": "arjun@example.com"}
-]
+general_total = fetch_total("SELECT SUM(amount) AS total FROM donate_payment WHERE payment_status='PAID'")
+# print(general_total)
+project_total = fetch_total("SELECT SUM(amount) AS total FROM package_payment WHERE payment_status='success '")
+# print(project_total)
+overall_total = general_total + project_total 
+# print(overall_total)
 
-print('''
-  <head>
-    <link rel="stylesheet" href="style/dashboard.css">
-  </head>
+# # ===================== BIRTHDAY SECTION =====================
 
-  <h2><i class="fas fa-home"></i> Dashboard (Home)</h2>
+cursor.execute("""
+    SELECT id, fullname, DateofBirth 
+    FROM usersignup
+    ORDER BY MONTH(DateofBirth), DAY(DateofBirth)
+""")
+birthdays = cursor.fetchall()
+# print(birthdays)
+today = datetime.now()
+nearest = None
 
-  <div class="dashboard-cards">
-    <div class="card">
-      <h3>Total Projects</h3>
-      <p>''' + str(total_projects) + '''</p>
-    </div>
+for b in birthdays:
+    bday = datetime.strptime(b['DateofBirth'], "%Y-%m-%d")
+    upcoming = datetime(today.year, bday.month, bday.day)
+    if upcoming < today:
+        upcoming = upcoming.replace(year=today.year + 1)
 
-    <div class="card">
-      <h3>Total Donors</h3>
-      <p>''' + str(total_donors) + '''</p>
-    </div>
+    if not nearest or upcoming < nearest['date']:
+        nearest = {
+            "id": b['id'],
+            "name": b['fullname'],
+            "date": upcoming
+        }
+# print(nearest)
+# ===================== HTML =====================
 
-    <div class="card">
-      <h3>Total Donations</h3>
-      <p>₹ ''' + str(total_donations) + '''</p>
-    </div>
-  </div>
+print("""
 
-  <div class="section">
-    <h3>Recent Donations</h3>
-    <table>
-      <thead>
-        <tr><th>Donor</th><th>Project</th><th>Amount (₹)</th></tr>
-      </thead>
-      <tbody>''')
 
-for donation in recent_donations:
-    print(f"<tr><td>{donation['name']}</td><td>{donation['project']}</td><td>{donation['amount']}</td></tr>")
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
 
-print('''
-      </tbody>
-    </table>
-  </div>
 
-  <div class="section">
-    <h3>Special Campaigns</h3>
-    <ul class="campaign-list">''')
 
-for campaign in special_campaigns:
-    status_class = "active" if campaign['status'] == "Active" else "completed"
-    print(f'<li class="{status_class}">{campaign["title"]} - {campaign["status"]}</li>')
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  margin-bottom: 30px;
+}
 
-print('''
-    </ul>
-  </div>
+.card {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
 
-  <div class="section">
-    <h3>Donor Birthdays Today</h3>
-    <ul class="birthday-list">''')
+.card h4 {
+  margin-bottom: 8px;
+  font-size: 17px;
+  color: #333;
+}
 
-for donor in donor_birthdays:
-    print(f'''
-      <li>
-        <strong>{donor["name"]}</strong>
-        <a href="tel:{donor["phone"]}" class="contact-btn">📞</a>
-        <a href="mailto:{donor["email"]}" class="contact-btn">✉️</a>
-      </li>
-    ''')
+.card .value {
+  font-size: 22px;
+  font-weight: bold;
+  color: #0d6efd;
+}
 
-print('''
-    </ul>
-  </div>
+.birthday-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+}
 
+.birthday-list table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.birthday-list th, .birthday-list td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+</style>
+</head>
+<body>
+
+<div class='dashboard'>
+""")
+
+print(f"<div class='card'><h4>Total Donation</h4><div class='value'>₹ {overall_total}</div></div>")
+print(f"<div class='card'><h4>Project Donation</h4><div class='value'>₹ {project_total}</div></div>")
+print(f"<div class='card'><h4>General Donation</h4><div class='value'>₹ {general_total}</div></div>")
+
+if nearest:
+    print(f"<div class='card'><h4>Next Birthday</h4><div class='value'>{nearest['name']}<br>{nearest['date'].strftime('%d %b')}</div></div>")
+else:
+    print("<div class='card'><h4>Next Birthday</h4><div class='value'>No Users</div></div>")
+
+print("""
 </div>
-</div>
-</body>
-</html>
-''')
+
+<div class='birthday-title'>Upcoming Birthdays</div>
+<div class='birthday-list'>
+<table>
+<thead><tr><th>ID</th><th>Name</th><th>Birthday</th></tr></thead><tbody>
+""")
+
+for b in birthdays:
+    bd = datetime.strptime(b['DateofBirth'], "%Y-%m-%d")
+    print(f"<tr><td>{b['id']}</td><td>{b['fullname']}</td><td>{bd.strftime('%d %b')}</td></tr>")
+
+print("""
+</tbody></table></div>
+</body></html>
+""")
+
+cursor.close()
+db.close()

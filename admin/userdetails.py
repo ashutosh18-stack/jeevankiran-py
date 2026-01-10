@@ -16,7 +16,7 @@ mydb = mysql.connector.connect(
 )
 mycursor = mydb.cursor(dictionary=True)
 
-query = "SELECT * FROM donate_payment"
+query = "SELECT * FROM usersignup"
 mycursor.execute(query)
 results = mycursor.fetchall()
 
@@ -53,9 +53,8 @@ print('''
           <th>ID</th> 
           <th>NAME</th>
           <th>EMAIL</th>
-          <th>AMOUNT</th>
-          <th>MESSAGE</th>
-          <th>RECEIPT</th>
+          <th>DOB</th>
+          <th>REGISTRATION_DATE</th>
         </tr>
       </thead>
       <tbody>
@@ -63,12 +62,11 @@ print('''
 
 # Loop
 for x in results:
-    id = x['donation_id']
-    name = x['name']
+    id = x['id']
+    name = x['fullname']
     email = x['email']
-    amount = x['amount']
-    message = x['message']
-    receipt_path=x['receipt_path']
+    amount = x['DateofBirth']
+    message = x['regdate']
 
     print(f'''
       <tr>
@@ -77,9 +75,7 @@ for x in results:
         <td>{email}</td>
         <td>{amount}</td>
         <td>{message}</td>
-        <td>
-            <a class="receipt-btn" href="../user/backend/{receipt_path}" target="_blank">Download</a>
-        </td>
+       
       </tr>
     ''')
 

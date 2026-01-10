@@ -29,7 +29,7 @@ if os.path.exists(folder_path):
             os.rmdir(os.path.join(root, dir))
     os.rmdir(folder_path)
 
-delete_package_query = f"DELETE FROM packagemaster WHERE package_id ={package_id}"
+delete_package_query = f"DELETE FROM packagemaster WHERE package_id={package_id};"
 # print(delete_package_query)
 mycursor.execute(delete_package_query)
 mydb.commit()
